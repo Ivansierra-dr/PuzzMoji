@@ -11,12 +11,17 @@ const AdBanner = ({
 
   useEffect(() => {
     // Solo cargar anuncios en producción
-    if (process.env.NODE_ENV === 'production' && window.adsbygoogle) {
-      try {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-      } catch (error) {
-        console.warn('AdSense error:', error);
-      }
+    if (process.env.NODE_ENV === 'production' && window.adsbygoogle && adRef.current) {
+      // Asegurar que el contenedor tenga dimensiones antes de inicializar AdSense
+      const timer = setTimeout(() => {
+        try {
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        } catch (error) {
+          console.warn('AdSense error:', error);
+        }
+      }, 100); // Pequeño delay para asegurar que el DOM esté renderizado
+      
+      return () => clearTimeout(timer);
     }
   }, []);
 
