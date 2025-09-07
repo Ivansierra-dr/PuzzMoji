@@ -1,0 +1,322 @@
+[
+  {
+    "id": 1,
+    "date": "2025-09-07",
+    "emojis": ["🕶️", "🌃", "👽"],
+    "answer": ["men in black", "hombres de negro"],
+    "category": "película",
+    "hint": "Agentes que protegen la Tierra de alienígenas"
+  },
+  {
+    "id": 2,
+    "date": "2025-09-08",
+    "emojis": ["🧙‍♂️", "💍", "🔥"],
+    "answer": ["el señor de los anillos", "señor de los anillos", "lotr", "lord of the rings"],
+    "category": "película",
+    "hint": "Una épica aventura fantástica"
+  },
+  {
+    "id": 3,
+    "date": "2025-09-09",
+    "emojis": ["🦸‍♂️", "🦇", "🌃"],
+    "answer": ["batman", "el caballero oscuro", "the dark knight"],
+    "category": "película",
+    "hint": "El vigilante de Gotham"
+  },
+  {
+    "id": 4,
+    "date": "2025-09-10",
+    "emojis": ["👨‍👩‍👧", "🏠", "😷"],
+    "answer": ["los simpson", "simpsons", "the simpsons"],
+    "category": "serie",
+    "hint": "Familia amarilla famosa"
+  },
+  {
+    "id": 5,
+    "date": "2025-09-11",
+    "emojis": ["🦈", "🏖️", "🩸"],
+    "answer": ["tiburon", "jaws", "tiburón"],
+    "category": "película",
+    "hint": "Terror en la playa"
+  },
+  {
+    "id": 6,
+    "date": "2025-09-12",
+    "emojis": ["👑", "🎮", "⚔️"],
+    "answer": ["juego de tronos", "game of thrones", "got"],
+    "category": "serie",
+    "hint": "Lucha por el trono de hierro"
+  },
+  {
+    "id": 7,
+    "date": "2025-09-13",
+    "emojis": ["🤖", "🚗", "⚡"],
+    "answer": ["transformers"],
+    "category": "película",
+    "hint": "Robots que se transforman"
+  },
+  {
+    "id": 8,
+    "date": "2025-09-14",
+    "emojis": ["🕷️", "🕸️", "🦸‍♂️"],
+    "answer": ["spiderman", "spider-man", "hombre araña", "el hombre araña"],
+    "category": "película",
+    "hint": "Tu amigable vecino"
+  },
+  {
+    "id": 9,
+    "date": "2025-09-15",
+    "emojis": ["🏴‍☠️", "🚢", "🏝️"],
+    "answer": ["piratas del caribe", "pirates of the caribbean"],
+    "category": "película",
+    "hint": "Jack Sparrow"
+  },
+  {
+    "id": 10,
+    "date": "2025-09-16",
+    "emojis": ["👻", "🔫", "👮"],
+    "answer": ["cazafantasmas", "ghostbusters"],
+    "category": "película",
+    "hint": "¿A quién vas a llamar?"
+  },
+  {
+    "id": 11,
+    "date": "2025-09-17",
+    "emojis": ["🍎", "🐍", "👸"],
+    "answer": ["blancanieves", "snow white"],
+    "category": "película",
+    "hint": "La princesa más pálida"
+  },
+  {
+    "id": 12,
+    "date": "2025-09-18",
+    "emojis": ["🦁", "👑", "🌍"],
+    "answer": ["el rey leon", "rey leon", "lion king"],
+    "category": "película",
+    "hint": "Hakuna Matata"
+  },
+  {
+    "id": 13,
+    "date": "2025-09-19",
+    "emojis": ["⚡", "🎓", "🦉"],
+    "answer": ["harry potter"],
+    "category": "película",
+    "hint": "El niño que vivió"
+  },
+  {
+    "id": 14,
+    "date": "2025-09-20",
+    "emojis": ["🐠", "🌊", "👨‍👦"],
+    "answer": ["buscando a nemo", "finding nemo"],
+    "category": "película",
+    "hint": "Pez payaso perdido"
+  },
+  {
+    "id": 15,
+    "date": "2025-09-21",
+    "emojis": ["💊", "🔴", "🐰"],
+    "answer": ["matrix", "la matrix"],
+    "category": "película",
+    "hint": "Pastilla roja o azul"
+  },
+  {
+    "id": 16,
+    "date": "2025-09-22",
+    "emojis": ["🚗", "⏰", "📅"],
+    "answer": ["volver al futuro", "back to the future"],
+    "category": "película",
+    "hint": "Doc y Marty McFly"
+  },
+  {
+    "id": 17,
+    "date": "2025-09-23",
+    "emojis": ["🍫", "🏭", "👦"],
+    "answer": ["charlie y la fabrica de chocolate", "willy wonka"],
+    "category": "película",
+    "hint": "Ticket dorado"
+  },
+  {
+    "id": 18,
+    "date": "2025-09-24",
+    "emojis": ["🧊", "❄️", "👸"],
+    "answer": ["frozen"],
+    "category": "película",
+    "hint": "Let it go!"
+  },
+  {
+    "id": 19,
+    "date": "2025-09-25",
+    "emojis": ["🍕", "🐢", "🥷"],
+    "answer": ["tortugas ninja", "teenage mutant ninja turtles"],
+    "category": "serie",
+    "hint": "Cowabunga!"
+  },
+  {
+    "id": 20,
+    "date": "2025-09-26",
+    "emojis": ["🏰", "🌹", "🕰️"],
+    "answer": ["la bella y la bestia", "beauty and the beast"],
+    "category": "película",
+    "hint": "Amor verdadero"
+  },
+  {
+    "id": 21,
+    "date": "2025-09-27",
+    "emojis": ["🐻", "🍯", "🌳"],
+    "answer": ["winnie pooh", "winnie the pooh"],
+    "category": "película",
+    "hint": "Bosque de los Cien Acres"
+  },
+  {
+    "id": 22,
+    "date": "2025-09-28",
+    "emojis": ["🚀", "👽", "📱"],
+    "answer": ["et", "e.t."],
+    "category": "película",
+    "hint": "Teléfono casa"
+  },
+  {
+    "id": 23,
+    "date": "2025-09-29",
+    "emojis": ["🎪", "🐘", "🎭"],
+    "answer": ["dumbo"],
+    "category": "película",
+    "hint": "Elefante volador"
+  },
+  {
+    "id": 24,
+    "date": "2025-09-30",
+    "emojis": ["🎸", "💀", "🌮"],
+    "answer": ["coco"],
+    "category": "película",
+    "hint": "Día de los Muertos"
+  },
+  {
+    "id": 25,
+    "date": "2025-10-01",
+    "emojis": ["🦖", "🏝️", "🧬"],
+    "answer": ["jurassic park", "parque jurasico"],
+    "category": "película",
+    "hint": "Dinosaurios clonados"
+  },
+  {
+    "id": 26,
+    "date": "2025-10-02",
+    "emojis": ["👨‍🚀", "🌕", "🚀"],
+    "answer": ["apollo 13", "apolo 13"],
+    "category": "película",
+    "hint": "Houston, tenemos un problema"
+  },
+  {
+    "id": 27,
+    "date": "2025-10-03",
+    "emojis": ["🐵", "🍌", "🦍"],
+    "answer": ["king kong"],
+    "category": "película",
+    "hint": "Gorila gigante"
+  },
+  {
+    "id": 28,
+    "date": "2025-10-04",
+    "emojis": ["🎭", "🎨", "👨‍🎨"],
+    "answer": ["la la land"],
+    "category": "película",
+    "hint": "Musical de Los Ángeles"
+  },
+  {
+    "id": 29,
+    "date": "2025-10-05",
+    "emojis": ["🏠", "🎈", "👴"],
+    "answer": ["up", "up una aventura de altura"],
+    "category": "película",
+    "hint": "Casa voladora"
+  },
+  {
+    "id": 30,
+    "date": "2025-10-06",
+    "emojis": ["🧙‍♀️", "👠", "🌪️"],
+    "answer": ["el mago de oz", "wizard of oz"],
+    "category": "película",
+    "hint": "Sigue el camino de baldosas amarillas"
+  },
+  {
+    "id": 31,
+    "date": "2025-10-07",
+    "emojis": ["🐭", "🏰", "✨"],
+    "answer": ["mickey mouse", "disney"],
+    "category": "personaje",
+    "hint": "La mascota más famosa del mundo"
+  },
+  {
+    "id": 32,
+    "date": "2025-10-08",
+    "emojis": ["🦸‍♀️", "⭐", "🛡️"],
+    "answer": ["wonder woman", "mujer maravilla"],
+    "category": "película",
+    "hint": "Amazona guerrera"
+  },
+  {
+    "id": 33,
+    "date": "2025-10-09",
+    "emojis": ["🎵", "🏔️", "👨‍👩‍👧‍👦"],
+    "answer": ["sonrisas y lagrimas", "the sound of music"],
+    "category": "película",
+    "hint": "Do-Re-Mi"
+  },
+  {
+    "id": 34,
+    "date": "2025-10-10",
+    "emojis": ["🍎", "📱", "💻"],
+    "answer": ["steve jobs", "jobs"],
+    "category": "película",
+    "hint": "Fundador de Apple"
+  },
+  {
+    "id": 35,
+    "date": "2025-10-11",
+    "emojis": ["🏎️", "⚡", "🏆"],
+    "answer": ["cars", "rayo mcqueen"],
+    "category": "película",
+    "hint": "Ka-chiga!"
+  },
+  {
+    "id": 36,
+    "date": "2025-10-12",
+    "emojis": ["🌊", "🐠", "🦀"],
+    "answer": ["la sirenita", "the little mermaid"],
+    "category": "película",
+    "hint": "Bajo del mar"
+  },
+  {
+    "id": 37,
+    "date": "2025-10-13",
+    "emojis": ["🍔", "🍟", "🤡"],
+    "answer": ["super size me", "mcdonalds"],
+    "category": "película",
+    "hint": "Documental sobre comida rápida"
+  },
+  {
+    "id": 38,
+    "date": "2025-10-14",
+    "emojis": ["🎃", "👻", "🕷️"],
+    "answer": ["halloween"],
+    "category": "película",
+    "hint": "Michael Myers"
+  },
+  {
+    "id": 39,
+    "date": "2025-10-15",
+    "emojis": ["🧠", "🍷", "🎭"],
+    "answer": ["hannibal", "el silencio de los inocentes"],
+    "category": "película",
+    "hint": "Hola Clarice"
+  },
+  {
+    "id": 40,
+    "date": "2025-10-16",
+    "emojis": ["🔪", "🚿", "🏨"],
+    "answer": ["psycho", "psicosis"],
+    "category": "película",
+    "hint": "Escena icónica de ducha de Hitchcock"
+  }
+]

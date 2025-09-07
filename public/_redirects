@@ -1,0 +1,6 @@
+# Netlify redirects for SPA
+/*    /index.html   200
+
+# Redirects personalizados
+/app    /    301
+/play   /    301

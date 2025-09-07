@@ -1,0 +1,91 @@
+.app {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #00f5d4 0%, #9b5de5 100%);
+  position: relative;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.app-title {
+  display: flex;
+  align-items: center;
+}
+
+.app-logo {
+  height: 60px;
+  width: auto;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  animation: logoFloat 3s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+.header-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.stats-button,
+.info-button {
+  background: #f15bb5;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 15px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(241, 91, 181, 0.3);
+  min-width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-button {
+  background: #00f5d4;
+  box-shadow: 0 4px 15px rgba(0, 245, 212, 0.3);
+}
+
+.stats-button:hover {
+  background: #ff6bb3;
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(241, 91, 181, 0.4);
+}
+
+.info-button:hover {
+  background: #00bbf0;
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 245, 212, 0.4);
+}
+
+.app-logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.app-main {
+  padding: 20px;
+}
+
+@media (max-width: 480px) {
+  .app-header {
+    padding: 15px 20px;
+  }
+  
+  .app-logo {
+    height: 45px;
+  }
+}
