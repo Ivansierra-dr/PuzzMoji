@@ -13,7 +13,7 @@ class DateService {
   }
 
   /**
-   * Obtiene la fecha actual desde una API externa confiable
+   * Obtiene la fecha actual, intentando API externa solo si es necesario
    * @returns {Promise<string>} Fecha en formato YYYY-MM-DD
    */
   async getRealDate() {
@@ -24,28 +24,27 @@ class DateService {
         return this.cachedDate;
       }
 
-      // Intentar con diferentes APIs
-      for (const apiUrl of DATE_APIS) {
-        try {
-          const date = await this.fetchFromAPI(apiUrl);
-          if (date) {
-            this.cachedDate = date;
-            this.lastFetch = Date.now();
-            return date;
-          }
-        } catch (error) {
-          console.warn(`Failed to fetch from ${apiUrl}:`, error);
-          continue;
+      // Usar fecha local como principal (los usuarios honestos no cambiarán la fecha del sistema)
+      const localDate = this.getLocalDate();
+      
+      // Solo intentar API externa silenciosamente, sin mostrar errores
+      try {
+        const apiDate = await this.fetchFromAPI(DATE_APIS[0]);
+        if (apiDate && this.isValidGameDate(apiDate)) {
+          this.cachedDate = apiDate;
+          this.lastFetch = Date.now();
+          return apiDate;
         }
+      } catch (error) {
+        // Ignorar errores de API silenciosamente
       }
 
-      // Si todas las APIs fallan, usar fecha local como último recurso
-      // pero marcar que es potencialmente insegura
-      console.warn('All date APIs failed, falling back to local date (potentially unsafe)');
-      return this.getLocalDate();
+      // Usar fecha local si la API falla
+      this.cachedDate = localDate;
+      this.lastFetch = Date.now();
+      return localDate;
 
     } catch (error) {
-      console.error('Error getting real date:', error);
       return this.getLocalDate();
     }
   }
@@ -57,7 +56,7 @@ class DateService {
    */
   async fetchFromAPI(apiUrl) {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 segundos timeout
+    const timeoutId = setTimeout(() => controller.abort(), 2000); // 2 segundos timeout
 
     try {
       const response = await fetch(apiUrl, {

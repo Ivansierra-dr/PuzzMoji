@@ -155,7 +155,12 @@ const EmojiPuzzle = () => {
       return currentPuzzle.answer.includes(normalizedAttempt) ? '🟩' : '🟥';
     }).join('');
     
-    const text = `PuzzMoji ${currentPuzzle.date}\n${emojis}\n${squares}\n${attemptsLeft === 0 ? '❌' : `✅ ${attempts.length}/6`}\n\nJuega en: playpuzzmoji.com`;
+    const resultIcon = attemptsLeft === 0 ? '❌' : `✅ ${attempts.length}/6`;
+    const encouragement = attemptsLeft === 0 
+      ? '¡Era complicado! 🤔 ¿Te animas con el de mañana?' 
+      : `¡Lo conseguí en ${attempts.length} intento${attempts.length > 1 ? 's' : ''}! 🎉`;
+    
+    const text = `${encouragement}\n\nPuzzMoji ${currentPuzzle.date}\n${emojis}\n${squares} ${resultIcon}\n\n¿Puedes adivinar qué película o serie es? 🎭\nJuega GRATIS en: playpuzzmoji.com`;
     
     if (navigator.share) {
       navigator.share({ text });
