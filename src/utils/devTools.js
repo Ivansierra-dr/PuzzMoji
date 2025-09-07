@@ -15,13 +15,14 @@ class DevTools {
     
     console.log('🔍 Checking dev mode:', { devMode, devKey });
     
-    // Clave secreta para activar modo dev
-    if (devMode === 'true' && devKey === 'puzzmoji2025') {
+    // Clave secreta para activar modo dev (desde variable de entorno)
+    const requiredDevKey = import.meta.env.VITE_DEV_KEY || 'dev_disabled';
+    if (devMode === 'true' && devKey === requiredDevKey) {
       this.isDevMode = true;
       console.log('🛠️ DEV MODE CONDITIONS MET');
       this.enableDevMode();
     } else {
-      console.log('❌ Dev mode not activated. Need: ?dev=true&key=puzzmoji2025');
+      console.log('❌ Dev mode not activated. Need: ?dev=true&key=[SECRET_KEY]');
     }
   }
 

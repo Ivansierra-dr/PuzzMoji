@@ -46,9 +46,9 @@ src/
 Para acceder a las herramientas de desarrollo:
 
 1. **Desarrollo Local**: 
-   ```
-   http://localhost:5173/?dev=true&key=puzzmoji2025
-   ```
+   - Copia `.env.example` como `.env.local`
+   - Configura `VITE_DEV_KEY=tu_clave_secreta`
+   - Accede a: `http://localhost:5173/?dev=true&key=tu_clave_secreta`
 
 2. **Verificación**: Una vez activado, verás:
    - Panel rojo flotante en la esquina superior derecha
@@ -148,8 +148,9 @@ window.devTools.resetStats();
 
 #### Medidas de Seguridad Implementadas
 - **Autenticación por URL**: Requiere parámetros específicos
-- **Clave secreta**: `puzzmoji2025` (cambiar en producción)
+- **Clave secreta**: Configurada via variable de entorno `VITE_DEV_KEY`
 - **Solo desarrollo**: Se cargan solo con `import.meta.env.DEV`
+- **Variables de entorno**: Claves sensibles NO están en el código público
 - **Confirmaciones**: Dialogs de confirmación para acciones destructivas
 - **Console logging**: Toda actividad es registrada
 
