@@ -5,6 +5,7 @@ import LandingPage from './components/LandingPage';
 import PWAPrompt from './components/PWAPrompt';
 import AdBanner from './components/AdBanner';
 import LegalMenu from './components/LegalMenu';
+import LegalMenuPage from './components/LegalMenuPage';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsOfService from './components/TermsOfService';
 import ContactPage from './components/ContactPage';
@@ -28,6 +29,7 @@ function App() {
   const [showTerms, setShowTerms] = useState(false);
   const [showContact, setShowContact] = useState(false);
   const [showLegal, setShowLegal] = useState(false);
+  const [showLegalMenu, setShowLegalMenu] = useState(false);
   const { isInstallable, updateAvailable, installApp, updateApp } = usePWA();
 
   useEffect(() => {
@@ -84,16 +86,35 @@ function App() {
             📊
           </button>
           <LegalMenu
-            onPrivacyClick={() => setShowPrivacy(true)}
-            onTermsClick={() => setShowTerms(true)}
-            onContactClick={() => setShowContact(true)}
-            onLegalClick={() => setShowLegal(true)}
+            onMenuPageClick={() => setShowLegalMenu(true)}
           />
         </div>
       </header>
       
       <main className="app-main">
-        <EmojiPuzzle />
+        {showLegalMenu ? (
+          <LegalMenuPage
+            onPrivacyClick={() => {
+              setShowLegalMenu(false);
+              setShowPrivacy(true);
+            }}
+            onTermsClick={() => {
+              setShowLegalMenu(false);
+              setShowTerms(true);
+            }}
+            onContactClick={() => {
+              setShowLegalMenu(false);
+              setShowContact(true);
+            }}
+            onLegalClick={() => {
+              setShowLegalMenu(false);
+              setShowLegal(true);
+            }}
+            onClose={() => setShowLegalMenu(false)}
+          />
+        ) : (
+          <EmojiPuzzle />
+        )}
       </main>
       
       {/* Banner inferior fijo */}
