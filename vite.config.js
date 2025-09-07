@@ -11,14 +11,7 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     sourcemap: false, // No generar sourcemaps en producción
-    minify: 'esbuild',
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom']
-        }
-      }
-    }
+    minify: 'esbuild'
   },
   
   // Configuración para desarrollo con host

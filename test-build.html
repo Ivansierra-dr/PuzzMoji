@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Build</title>
+</head>
+<body>
+    <h1>Probando el build</h1>
+    <div id="root"></div>
+    
+    <script>
+        console.log('Página de prueba cargada');
+        
+        // Cargar el JavaScript del build
+        const script = document.createElement('script');
+        script.type = 'module';
+        script.src = 'http://localhost:8080/assets/index-Cext0s8Q.js';
+        script.onload = () => console.log('Script cargado');
+        script.onerror = (e) => console.error('Error cargando script:', e);
+        document.head.appendChild(script);
+        
+        // Cargar CSS
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'http://localhost:8080/assets/index-wimupftS.css';
+        document.head.appendChild(link);
+        
+        // Ver errores
+        window.addEventListener('error', (e) => {
+            console.error('Error global:', e.message, e.filename, e.lineno, e.colno);
+        });
+    </script>
+</body>
+</html>
