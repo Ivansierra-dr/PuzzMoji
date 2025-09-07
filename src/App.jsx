@@ -4,6 +4,11 @@ import Statistics from './components/Statistics';
 import LandingPage from './components/LandingPage';
 import PWAPrompt from './components/PWAPrompt';
 import AdBanner from './components/AdBanner';
+import LegalFooter from './components/LegalFooter';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import TermsOfService from './components/TermsOfService';
+import ContactPage from './components/ContactPage';
+import LegalNotice from './components/LegalNotice';
 import { usePWA } from './hooks/usePWA';
 import puzzmojiLogo from './assets/puzzmoji-logo.svg';
 import './App.css';
@@ -19,6 +24,10 @@ if (import.meta.env.DEV) {
 function App() {
   const [showStats, setShowStats] = useState(false);
   const [showLanding, setShowLanding] = useState(false);
+  const [showPrivacy, setShowPrivacy] = useState(false);
+  const [showTerms, setShowTerms] = useState(false);
+  const [showContact, setShowContact] = useState(false);
+  const [showLegal, setShowLegal] = useState(false);
   const { isInstallable, updateAvailable, installApp, updateApp } = usePWA();
 
   useEffect(() => {
@@ -99,6 +108,31 @@ function App() {
         onInstall={installApp}
         onUpdate={updateApp}
       />
+      
+      {/* Footer legal */}
+      <LegalFooter
+        onPrivacyClick={() => setShowPrivacy(true)}
+        onTermsClick={() => setShowTerms(true)}
+        onContactClick={() => setShowContact(true)}
+        onLegalClick={() => setShowLegal(true)}
+      />
+      
+      {/* Modales legales */}
+      {showPrivacy && (
+        <PrivacyPolicy onClose={() => setShowPrivacy(false)} />
+      )}
+      
+      {showTerms && (
+        <TermsOfService onClose={() => setShowTerms(false)} />
+      )}
+      
+      {showContact && (
+        <ContactPage onClose={() => setShowContact(false)} />
+      )}
+      
+      {showLegal && (
+        <LegalNotice onClose={() => setShowLegal(false)} />
+      )}
     </div>
   );
 }

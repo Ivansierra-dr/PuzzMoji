@@ -60,13 +60,13 @@
   }
 }
 
-/* Ensure content doesn't get hidden behind bottom banner */
+/* Ensure content doesn't get hidden behind bottom banner and footer */
 .content-with-bottom-ad {
-  padding-bottom: 110px;
+  padding-bottom: 200px; /* Space for ad banner (90px) + legal footer (80px) + margin */
 }
 
 @media (max-width: 768px) {
   .content-with-bottom-ad {
-    padding-bottom: 80px;
+    padding-bottom: 180px; /* Space for ad banner (60px) + legal footer (100px mobile) + margin */
   }
 }
