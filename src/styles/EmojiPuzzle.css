@@ -467,12 +467,26 @@
 
 /* Firefox-specific fixes */
 @-moz-document url-prefix() {
+  .input-form {
+    display: flex;
+    gap: 8px;
+    align-items: stretch;
+  }
+  
+  .answer-input {
+    flex: 1;
+    min-width: 0;
+    max-width: calc(100% - 140px);
+  }
+  
   .submit-btn {
-    min-width: 150px !important;
-    padding: 18px 36px !important;
-    white-space: normal;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+    min-width: 120px !important;
+    max-width: 130px !important;
+    padding: 16px 24px !important;
+    flex-shrink: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
