@@ -3,8 +3,7 @@
 
 const DATE_APIS = [
   'https://worldtimeapi.org/api/timezone/Etc/UTC',
-  'https://api.timezonedb.com/v2.1/get-time-zone?key=demo&format=json&by=zone&zone=UTC',
-  'http://worldclockapi.com/api/json/utc/now'
+  'https://api.timezonedb.com/v2.1/get-time-zone?key=demo&format=json&by=zone&zone=UTC'
 ];
 
 class DateService {

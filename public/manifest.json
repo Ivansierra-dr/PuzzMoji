@@ -30,15 +30,7 @@
       "type": "image/png"
     }
   ],
-  "screenshots": [
-    {
-      "src": "/screenshot-mobile.png",
-      "sizes": "390x844",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "PuzzMoji en móvil"
-    }
-  ],
+  "screenshots": [],
   "shortcuts": [
     {
       "name": "Jugar hoy",
