@@ -2,10 +2,11 @@
   max-width: 500px;
   margin: 0 auto;
   padding: 20px;
-  min-height: 100vh;
+  min-height: calc(100vh - 100px);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  padding-top: 40px;
 }
 
 .puzzle-container {
@@ -487,6 +488,28 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+}
+
+/* Optimize spacing for large screens */
+@media (min-width: 1024px) {
+  .puzzle-container {
+    padding: 30px 25px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .puzzle-container {
+    padding: 25px 30px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1440px) {
+  .puzzle-container {
+    padding: 20px 35px;
+    max-width: 650px;
   }
 }
 
