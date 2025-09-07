@@ -214,6 +214,8 @@ const EmojiPuzzle = () => {
         {showHint && (
           <div className="hint">
             💡 {currentPuzzle.hint}
+            <br />
+            📂 Categoría: {currentPuzzle.category}
           </div>
         )}
         
