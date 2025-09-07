@@ -35,7 +35,7 @@ class DateService {
           this.lastFetch = Date.now();
           return apiDate;
         }
-      } catch (error) {
+      } catch {
         // Ignorar errores de API silenciosamente
       }
 
@@ -44,7 +44,7 @@ class DateService {
       this.lastFetch = Date.now();
       return localDate;
 
-    } catch (error) {
+    } catch {
       return this.getLocalDate();
     }
   }

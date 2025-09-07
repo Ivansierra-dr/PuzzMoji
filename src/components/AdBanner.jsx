@@ -11,7 +11,7 @@ const AdBanner = ({
 
   useEffect(() => {
     // Solo cargar anuncios en producción
-    if (process.env.NODE_ENV === 'production' && window.adsbygoogle && adRef.current) {
+    if (import.meta.env.MODE === 'production' && window.adsbygoogle && adRef.current) {
       // Asegurar que el contenedor tenga dimensiones antes de inicializar AdSense
       const timer = setTimeout(() => {
         try {
@@ -29,7 +29,7 @@ const AdBanner = ({
   const isDev = import.meta.env.VITE_DEV_KEY && 
     new URLSearchParams(window.location.search).get('dev') === import.meta.env.VITE_DEV_KEY;
   
-  if (process.env.NODE_ENV !== 'production' || isDev) {
+  if (import.meta.env.MODE !== 'production' || isDev) {
     return (
       <div className={`ad-banner ad-banner--placeholder ${className}`} style={style}>
         <div className="ad-placeholder">
