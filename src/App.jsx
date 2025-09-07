@@ -4,7 +4,7 @@ import Statistics from './components/Statistics';
 import LandingPage from './components/LandingPage';
 import PWAPrompt from './components/PWAPrompt';
 import AdBanner from './components/AdBanner';
-import LegalFooter from './components/LegalFooter';
+import LegalMenu from './components/LegalMenu';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsOfService from './components/TermsOfService';
 import ContactPage from './components/ContactPage';
@@ -83,6 +83,12 @@ function App() {
           >
             📊
           </button>
+          <LegalMenu
+            onPrivacyClick={() => setShowPrivacy(true)}
+            onTermsClick={() => setShowTerms(true)}
+            onContactClick={() => setShowContact(true)}
+            onLegalClick={() => setShowLegal(true)}
+          />
         </div>
       </header>
       
@@ -107,14 +113,6 @@ function App() {
         updateAvailable={updateAvailable}
         onInstall={installApp}
         onUpdate={updateApp}
-      />
-      
-      {/* Footer legal */}
-      <LegalFooter
-        onPrivacyClick={() => setShowPrivacy(true)}
-        onTermsClick={() => setShowTerms(true)}
-        onContactClick={() => setShowContact(true)}
-        onLegalClick={() => setShowLegal(true)}
       />
       
       {/* Modales legales */}
