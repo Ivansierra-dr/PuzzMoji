@@ -7,10 +7,10 @@ export default defineConfig({
   
   // Configuración de build optimizada para producción
   build: {
-    target: 'es2015',
+    target: 'es2020',
     outDir: 'dist',
     assetsDir: 'assets',
-    sourcemap: false, // No generar sourcemaps en producción
+    sourcemap: false,
     minify: 'esbuild'
   },
   

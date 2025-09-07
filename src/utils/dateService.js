@@ -2,8 +2,7 @@
 // Evita que usuarios hagan trampa cambiando la fecha del dispositivo
 
 const DATE_APIS = [
-  'https://worldtimeapi.org/api/timezone/Etc/UTC',
-  'https://api.timezonedb.com/v2.1/get-time-zone?key=demo&format=json&by=zone&zone=UTC'
+  'https://worldtimeapi.org/api/timezone/Etc/UTC'
 ];
 
 class DateService {

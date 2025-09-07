@@ -13,26 +13,6 @@ const EmojiPuzzle = () => {
   const [isLoadingDate, setIsLoadingDate] = useState(true);
   const [dateError, setDateError] = useState(false);
 
-  useEffect(() => {
-    initializeGame();
-  }, [initializeGame]);
-
-  const initializeGame = useCallback(async () => {
-    try {
-      setIsLoadingDate(true);
-      await loadTodaysPuzzle();
-      await loadGameState();
-      setDateError(false);
-    } catch (error) {
-      console.error('Error initializing game:', error);
-      setDateError(true);
-      // Fallback al primer puzzle si hay error
-      setCurrentPuzzle(puzzlesData[0]);
-    } finally {
-      setIsLoadingDate(false);
-    }
-  }, []);
-
   const loadTodaysPuzzle = async () => {
     try {
       const today = await dateService.getRealDate();
@@ -76,6 +56,26 @@ const EmojiPuzzle = () => {
       }
     }
   };
+
+  const initializeGame = useCallback(async () => {
+    try {
+      setIsLoadingDate(true);
+      await loadTodaysPuzzle();
+      await loadGameState();
+      setDateError(false);
+    } catch (error) {
+      console.error('Error initializing game:', error);
+      setDateError(true);
+      // Fallback al primer puzzle si hay error
+      setCurrentPuzzle(puzzlesData[0]);
+    } finally {
+      setIsLoadingDate(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    initializeGame();
+  }, [initializeGame]);
 
   const saveGameState = async (newAttempts, status) => {
     const today = await dateService.getRealDate();
