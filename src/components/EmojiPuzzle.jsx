@@ -149,7 +149,6 @@ const EmojiPuzzle = () => {
   };
 
   const shareResult = () => {
-    const emojis = currentPuzzle.emojis.join('');
     const squares = attempts.map((_, index) => {
       const normalizedAttempt = attempts[index].trim().toLowerCase();
       return currentPuzzle.answer.includes(normalizedAttempt) ? '🟩' : '🟥';
@@ -160,7 +159,7 @@ const EmojiPuzzle = () => {
       ? '¡Era complicado! 🤔 ¿Te animas con el de mañana?' 
       : `¡Lo conseguí en ${attempts.length} intento${attempts.length > 1 ? 's' : ''}! 🎉`;
     
-    const text = `${encouragement}\n\nPuzzMoji ${currentPuzzle.date}\n${emojis}\n${squares} ${resultIcon}\n\n¿Puedes adivinar qué película o serie es? 🎭\nJuega GRATIS en: playpuzzmoji.com`;
+    const text = `${encouragement}\n\nPuzzMoji ${currentPuzzle.date}\n${squares} ${resultIcon}\n\n¿Puedes adivinar qué película o serie es? 🎭\nJuega GRATIS en: playpuzzmoji.com`;
     
     if (navigator.share) {
       navigator.share({ text });
@@ -171,7 +170,18 @@ const EmojiPuzzle = () => {
   };
 
   const getHint = () => {
-    setShowHint(true);
+    // Mostrar anuncio antes de revelar la pista
+    const showAd = window.confirm(
+      '¿Quieres ver un anuncio para acceder a la pista? Esto nos ayuda a mantener el juego gratuito.'
+    );
+    
+    if (showAd) {
+      // Simular carga de anuncio y luego mostrar pista
+      setTimeout(() => {
+        setShowHint(true);
+        alert('¡Gracias! Aquí tienes tu pista.');
+      }, 1500);
+    }
   };
 
   if (isLoadingDate || !currentPuzzle) {
