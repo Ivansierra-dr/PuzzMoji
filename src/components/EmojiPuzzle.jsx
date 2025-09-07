@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import puzzlesData from '../data/puzzles.json';
 import dateService from '../utils/dateService';
 import '../styles/EmojiPuzzle.css';
@@ -15,9 +15,9 @@ const EmojiPuzzle = () => {
 
   useEffect(() => {
     initializeGame();
-  }, []);
+  }, [initializeGame]);
 
-  const initializeGame = async () => {
+  const initializeGame = useCallback(async () => {
     try {
       setIsLoadingDate(true);
       await loadTodaysPuzzle();
@@ -31,7 +31,7 @@ const EmojiPuzzle = () => {
     } finally {
       setIsLoadingDate(false);
     }
-  };
+  }, []);
 
   const loadTodaysPuzzle = async () => {
     try {
@@ -98,11 +98,11 @@ const EmojiPuzzle = () => {
     if (currentPuzzle.answer.includes(normalizedInput)) {
       setGameStatus('won');
       await saveGameState(newAttempts, 'won');
-      await updateStats(true, newAttempts.length);
+      await updateStats(true);
     } else if (newAttempts.length >= 6) {
       setGameStatus('lost');
       await saveGameState(newAttempts, 'lost');
-      await updateStats(false, 6);
+      await updateStats(false);
     } else {
       await saveGameState(newAttempts, 'playing');
     }
@@ -111,7 +111,7 @@ const EmojiPuzzle = () => {
     setUserInput('');
   };
 
-  const updateStats = async (won, attemptsCount) => {
+  const updateStats = async (won) => {
     const stats = JSON.parse(localStorage.getItem('puzzmoji_stats') || '{}');
     const today = await dateService.getRealDate();
     
