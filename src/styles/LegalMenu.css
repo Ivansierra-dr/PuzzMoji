@@ -20,7 +20,7 @@
   justify-content: center;
   backdrop-filter: blur(10px);
   position: relative;
-  z-index: 1001;
+  z-index: 1000;
 }
 
 .legal-menu-button:hover {
@@ -76,19 +76,19 @@
 
 .legal-menu-overlay {
   position: fixed;
-  top: 0;
+  top: 80px;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  right: 0;
+  bottom: 0;
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  z-index: 9999;
+  z-index: 999;
   animation: fadeIn 0.3s ease-out;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
+  padding: 20px;
   margin: 0;
   box-sizing: border-box;
   overflow: hidden;
@@ -101,7 +101,7 @@
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  z-index: 10000;
+  z-index: 1001;
   width: 90vw;
   max-width: 400px;
   min-width: 300px;
@@ -209,7 +209,8 @@
 
 @media (max-width: 768px) {
   .legal-menu-overlay {
-    padding: 0;
+    top: 70px;
+    padding: 10px;
     align-items: center;
     justify-content: center;
   }
@@ -219,7 +220,7 @@
     min-width: 280px;
     max-width: 350px;
     margin: 10px;
-    max-height: 85vh;
+    max-height: calc(100vh - 100px);
   }
 
   .legal-menu-item {
@@ -237,7 +238,8 @@
 
 @media (max-width: 480px) {
   .legal-menu-overlay {
-    padding: 0;
+    top: 60px;
+    padding: 5px;
     align-items: center;
     justify-content: center;
   }
@@ -247,7 +249,7 @@
     min-width: 270px;
     max-width: 100%;
     margin: 5px;
-    max-height: 90vh;
+    max-height: calc(100vh - 80px);
     border-radius: 12px;
   }
 
