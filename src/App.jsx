@@ -83,7 +83,7 @@ function App() {
       
       {/* Banner inferior fijo */}
       <AdBanner 
-        slot="1234567890"
+        slot="8303646094"
         format="auto"
         className="ad-banner--bottom"
       />
