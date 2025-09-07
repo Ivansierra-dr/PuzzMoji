@@ -3,6 +3,7 @@ import EmojiPuzzle from './components/EmojiPuzzle';
 import Statistics from './components/Statistics';
 import LandingPage from './components/LandingPage';
 import PWAPrompt from './components/PWAPrompt';
+import AdBanner from './components/AdBanner';
 import { usePWA } from './hooks/usePWA';
 import puzzmojiLogo from './assets/puzzmoji-logo.svg';
 import './App.css';
@@ -44,7 +45,7 @@ function App() {
   }
 
   return (
-    <div className="app">
+    <div className="app content-with-bottom-ad">
       <header className="app-header">
         <div className="app-title">
           <img 
@@ -79,6 +80,13 @@ function App() {
       <main className="app-main">
         <EmojiPuzzle />
       </main>
+      
+      {/* Banner inferior fijo */}
+      <AdBanner 
+        slot="1234567890"
+        format="auto"
+        className="ad-banner--bottom"
+      />
       
       <Statistics 
         isOpen={showStats} 
