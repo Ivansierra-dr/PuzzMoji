@@ -65,3 +65,6 @@ pids
 
 # Optional eslint cache
 .eslintcache
+
+#Claude
+CLAUDE.md
