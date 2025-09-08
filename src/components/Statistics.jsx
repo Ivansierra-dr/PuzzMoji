@@ -32,6 +32,7 @@ const Statistics = ({ isOpen, onClose }) => {
     });
   };
 
+
   if (!isOpen) return null;
 
   return (
@@ -84,6 +85,7 @@ const Statistics = ({ isOpen, onClose }) => {
             )}
           </div>
         </div>
+        
       </div>
     </div>
   );

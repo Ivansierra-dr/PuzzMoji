@@ -45,10 +45,12 @@ function App() {
 
   const startGame = () => {
     setShowLanding(false);
+    setShowLegalMenu(false); // Ensure legal menu is closed when starting game
   };
 
   const showLandingPage = () => {
     setShowLanding(true);
+    setShowLegalMenu(false); // Reset legal menu state when going back to landing
   };
 
   if (showLanding) {
@@ -138,19 +140,31 @@ function App() {
       
       {/* Modales legales */}
       {showPrivacy && (
-        <PrivacyPolicy onClose={() => setShowPrivacy(false)} />
+        <PrivacyPolicy onClose={() => {
+          setShowPrivacy(false);
+          setShowLegalMenu(true); // Return to legal menu
+        }} />
       )}
       
       {showTerms && (
-        <TermsOfService onClose={() => setShowTerms(false)} />
+        <TermsOfService onClose={() => {
+          setShowTerms(false);
+          setShowLegalMenu(true); // Return to legal menu
+        }} />
       )}
       
       {showContact && (
-        <ContactPage onClose={() => setShowContact(false)} />
+        <ContactPage onClose={() => {
+          setShowContact(false);
+          setShowLegalMenu(true); // Return to legal menu
+        }} />
       )}
       
       {showLegal && (
-        <LegalNotice onClose={() => setShowLegal(false)} />
+        <LegalNotice onClose={() => {
+          setShowLegal(false);
+          setShowLegalMenu(true); // Return to legal menu
+        }} />
       )}
     </div>
   );

@@ -1,12 +1,44 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import '../styles/LegalPages.css';
 
 const LegalNotice = ({ onClose }) => {
   const [activeSection, setActiveSection] = useState(null);
+  const scrollTimeoutRef = useRef(null);
 
   const toggleSection = (section) => {
     setActiveSection(activeSection === section ? null : section);
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Clear any existing timeout
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+
+      // Remove focus from any focused element after scroll stops
+      scrollTimeoutRef.current = setTimeout(() => {
+        const activeElement = document.activeElement;
+        if (activeElement && activeElement.classList.contains('section-toggle')) {
+          activeElement.blur();
+        }
+      }, 100);
+    };
+
+    const scrollContainer = document.querySelector('.legal-body');
+    if (scrollContainer) {
+      scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
+    }
+
+    return () => {
+      if (scrollContainer) {
+        scrollContainer.removeEventListener('scroll', handleScroll);
+      }
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+    };
+  }, []);
 
   return (
     <div className="legal-modal">
@@ -80,7 +112,7 @@ const LegalNotice = ({ onClose }) => {
                 <p>PuzzMoji tiene por objeto proporcionar entretenimiento educativo a través de:</p>
                 <ul>
                   <li><strong>Juegos diarios:</strong> Puzzles de adivinanza con emojis</li>
-                  <li><strong>Contenido cultural:</strong> Referencias a películas, series, libros y cultura general</li>
+                  <li><strong>Contenido cultural:</strong> Referencias a películas, series y cultura general</li>
                   <li><strong>Estadísticas personales:</strong> Seguimiento de progreso individual</li>
                   <li><strong>Experiencia social:</strong> Compartir resultados sin spoilers</li>
                 </ul>

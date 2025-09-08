@@ -1,12 +1,44 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import '../styles/LegalPages.css';
 
 const PrivacyPolicy = ({ onClose }) => {
   const [activeSection, setActiveSection] = useState(null);
+  const scrollTimeoutRef = useRef(null);
 
   const toggleSection = (section) => {
     setActiveSection(activeSection === section ? null : section);
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Clear any existing timeout
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+
+      // Remove focus from any focused element after scroll stops
+      scrollTimeoutRef.current = setTimeout(() => {
+        const activeElement = document.activeElement;
+        if (activeElement && activeElement.classList.contains('section-toggle')) {
+          activeElement.blur();
+        }
+      }, 100);
+    };
+
+    const scrollContainer = document.querySelector('.legal-body');
+    if (scrollContainer) {
+      scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
+    }
+
+    return () => {
+      if (scrollContainer) {
+        scrollContainer.removeEventListener('scroll', handleScroll);
+      }
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+    };
+  }, []);
 
   return (
     <div className="legal-modal">
@@ -236,10 +268,18 @@ const PrivacyPolicy = ({ onClose }) => {
           <div className="legal-footer">
             <div className="contact-info">
               <h3>📧 Contacto</h3>
+              <p>Para consultas sobre privacidad y protección de datos:</p>
+              <p><strong>playpuzzmoji@gmail.com</strong></p>
+              <p>Tiempo de respuesta: Máximo 30 días</p>
+            </div>
+            {/* Sección expandida para futuros canales
+            <div className="contact-info">
+              <h3>📧 Contacto</h3>
               <p>Para preguntas sobre privacidad:</p>
               <p><strong>Email:</strong> playpuzzmoji@gmail.com</p>
               <p><strong>Respuesta:</strong> Máximo 30 días</p>
             </div>
+            */}
           </div>
         </div>
       </div>

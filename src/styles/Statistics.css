@@ -141,6 +141,7 @@
   font-weight: 500;
 }
 
+
 @media (max-width: 480px) {
   .statistics-modal {
     padding: 20px;

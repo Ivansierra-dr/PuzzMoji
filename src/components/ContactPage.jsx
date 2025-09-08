@@ -1,12 +1,44 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import '../styles/LegalPages.css';
 
 const ContactPage = ({ onClose }) => {
   const [activeSection, setActiveSection] = useState(null);
+  const scrollTimeoutRef = useRef(null);
 
   const toggleSection = (section) => {
     setActiveSection(activeSection === section ? null : section);
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Clear any existing timeout
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+
+      // Remove focus from any focused element after scroll stops
+      scrollTimeoutRef.current = setTimeout(() => {
+        const activeElement = document.activeElement;
+        if (activeElement && activeElement.classList.contains('section-toggle')) {
+          activeElement.blur();
+        }
+      }, 100);
+    };
+
+    const scrollContainer = document.querySelector('.legal-body');
+    if (scrollContainer) {
+      scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
+    }
+
+    return () => {
+      if (scrollContainer) {
+        scrollContainer.removeEventListener('scroll', handleScroll);
+      }
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const handleEmailClick = () => {
     window.open('mailto:playpuzzmoji@gmail.com?subject=Contacto PuzzMoji&body=Hola,%0D%0A%0D%0ATengo una consulta sobre PuzzMoji:%0D%0A%0D%0A', '_blank');
@@ -291,6 +323,13 @@ const ContactPage = ({ onClose }) => {
           <div className="legal-footer">
             <div className="contact-summary">
               <h3>🎯 Resumen de Contacto</h3>
+              <p>Para cualquier consulta (soporte, sugerencias, negocios o asuntos legales):</p>
+              <p style={{fontSize: '1.2rem', fontWeight: 'bold', color: '#6d28d9', margin: '15px 0'}}>
+                📧 playpuzzmoji@gmail.com
+              </p>
+              <p>Por favor, indica en el asunto el tipo de consulta para una respuesta más rápida.</p>
+              
+              {/* Versión expandida para cuando tengamos múltiples canales
               <div className="contact-grid">
                 <div className="contact-type">
                   <strong>🆘 Soporte:</strong>
@@ -309,6 +348,7 @@ const ContactPage = ({ onClose }) => {
                   <span>playpuzzmoji@gmail.com</span>
                 </div>
               </div>
+              */}
               
               <div className="social-note">
                 <p><strong>📱 Redes Sociales:</strong> Próximamente en TikTok, Instagram y Twitter</p>

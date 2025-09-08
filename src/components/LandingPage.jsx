@@ -9,7 +9,7 @@ const LandingPage = ({ onStartGame }) => {
     {
       emoji: "🎭",
       title: "Un nuevo puzzle cada día",
-      description: "Desafíos frescos diariamente con películas, series y libros famosos"
+      description: "Desafíos frescos diariamente con películas y series famosas"
     },
     {
       emoji: "🧠",
@@ -92,7 +92,7 @@ const LandingPage = ({ onStartGame }) => {
           </div>
           <div className="step">
             <span className="step-number">2</span>
-            <p>Adivina la película, serie o libro</p>
+            <p>Adivina la película o serie</p>
           </div>
           <div className="step">
             <span className="step-number">3</span>

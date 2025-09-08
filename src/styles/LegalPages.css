@@ -268,10 +268,21 @@
   color: #4c1d95;
   transition: all 0.2s ease;
   text-align: left;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
 }
 
-.section-toggle:hover {
-  background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+@media (hover: hover) and (pointer: fine) {
+  .section-toggle:hover {
+    background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .section-toggle:active {
+    background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+  }
 }
 
 .section-toggle.active {
@@ -365,6 +376,8 @@
   align-items: center;
   padding: 10px 0;
   border-bottom: 1px solid rgba(155, 93, 229, 0.1);
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .info-item:last-child {
@@ -374,6 +387,31 @@
 .info-item strong {
   color: #6d28d9;
   min-width: 140px;
+  flex-shrink: 0;
+}
+
+.info-item > *:last-child {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  flex: 1;
+  text-align: right;
+}
+
+@media (max-width: 480px) {
+  .info-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  
+  .info-item strong {
+    min-width: auto;
+  }
+  
+  .info-item > *:last-child {
+    text-align: left;
+    width: 100%;
+  }
 }
 
 /* Contact Components */

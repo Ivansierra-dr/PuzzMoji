@@ -524,6 +524,29 @@
   }
 }
 
+/* Media query for intermediate screens */
+@media (max-width: 545px) and (min-width: 481px) {
+  .input-form {
+    gap: 8px;
+    display: flex;
+    align-items: stretch;
+  }
+  
+  .answer-input {
+    flex: 1;
+    min-width: 0;
+    max-width: calc(100% - 150px);
+  }
+  
+  .submit-btn {
+    min-width: 120px !important;
+    max-width: 140px !important;
+    padding: 14px 20px !important;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+}
+
 @media (max-width: 480px) {
   .emoji {
     font-size: 45px;

@@ -1,12 +1,44 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import '../styles/LegalPages.css';
 
 const TermsOfService = ({ onClose }) => {
   const [activeSection, setActiveSection] = useState(null);
+  const scrollTimeoutRef = useRef(null);
 
   const toggleSection = (section) => {
     setActiveSection(activeSection === section ? null : section);
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Clear any existing timeout
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+
+      // Remove focus from any focused element after scroll stops
+      scrollTimeoutRef.current = setTimeout(() => {
+        const activeElement = document.activeElement;
+        if (activeElement && activeElement.classList.contains('section-toggle')) {
+          activeElement.blur();
+        }
+      }, 100);
+    };
+
+    const scrollContainer = document.querySelector('.legal-body');
+    if (scrollContainer) {
+      scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
+    }
+
+    return () => {
+      if (scrollContainer) {
+        scrollContainer.removeEventListener('scroll', handleScroll);
+      }
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+    };
+  }, []);
 
   return (
     <div className="legal-modal">
@@ -38,7 +70,7 @@ const TermsOfService = ({ onClose }) => {
             </button>
             {activeSection === 'service' && (
               <div className="section-content">
-                <p>PuzzMoji es un juego web gratuito donde los usuarios adivinan películas, series y libros representados por emojis.</p>
+                <p>PuzzMoji es un juego web gratuito donde los usuarios adivinan películas y series representadas por emojis.</p>
                 
                 <h3>Características del Servicio</h3>
                 <ul>
@@ -342,11 +374,19 @@ const TermsOfService = ({ onClose }) => {
           <div className="legal-footer">
             <div className="contact-info">
               <h3>📧 Contacto</h3>
+              <p>Para cualquier consulta sobre estos términos, puedes contactarnos en:</p>
+              <p><strong>playpuzzmoji@gmail.com</strong></p>
+              <p>Tiempo de respuesta: Máximo 15 días hábiles</p>
+            </div>
+            {/* Sección expandida de contacto para futuros canales
+            <div className="contact-info">
+              <h3>📧 Contacto</h3>
               <p>Para preguntas sobre estos términos:</p>
               <p><strong>Email:</strong> playpuzzmoji@gmail.com</p>
               <p><strong>Asunto:</strong> "Términos de Servicio"</p>
               <p><strong>Respuesta:</strong> Máximo 15 días hábiles</p>
             </div>
+            */}
           </div>
         </div>
       </div>

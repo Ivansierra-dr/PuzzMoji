@@ -1,6 +1,6 @@
 # PuzzMoji 🎮
 
-Un juego diario de adivinanzas con emojis inspirado en Wordle. Los jugadores deben adivinar películas, series y libros basándose en pistas de emojis.
+Un juego diario de adivinanzas con emojis inspirado en Wordle. Los jugadores deben adivinar películas y series basándose en pistas de emojis.
 
 ## 🚀 Inicio Rápido
 
@@ -120,7 +120,7 @@ window.devTools.resetStats();
 - **Fecha**: Formato YYYY-MM-DD
 - **Emojis**: Array de 2-4 emojis relevantes
 - **Respuestas**: Array con variaciones aceptadas (español/inglés)
-- **Categorías**: película, serie, libro, personaje
+- **Categorías**: película, serie, personaje
 - **Hint**: Pista sin spoilers directos
 
 #### Agregar Nuevos Puzzles

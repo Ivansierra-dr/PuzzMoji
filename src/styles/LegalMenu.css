@@ -21,13 +21,25 @@
   backdrop-filter: blur(10px);
   position: relative;
   z-index: 1000;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
 }
 
-.legal-menu-button:hover {
-  background: linear-gradient(135deg, rgba(155, 93, 229, 0.2) 0%, rgba(102, 126, 234, 0.2) 100%);
-  border-color: rgba(155, 93, 229, 0.4);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(155, 93, 229, 0.3);
+@media (hover: hover) and (pointer: fine) {
+  .legal-menu-button:hover {
+    background: linear-gradient(135deg, rgba(155, 93, 229, 0.2) 0%, rgba(102, 126, 234, 0.2) 100%);
+    border-color: rgba(155, 93, 229, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(155, 93, 229, 0.3);
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .legal-menu-button:active {
+    background: linear-gradient(135deg, rgba(155, 93, 229, 0.2) 0%, rgba(102, 126, 234, 0.2) 100%);
+    border-color: rgba(155, 93, 229, 0.4);
+  }
 }
 
 .legal-menu-button.active {
@@ -155,10 +167,21 @@
   transition: all 0.2s ease;
   text-align: left;
   border-bottom: 1px solid rgba(155, 93, 229, 0.1);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
 }
 
-.legal-menu-item:hover {
-  background: linear-gradient(135deg, rgba(155, 93, 229, 0.1) 0%, rgba(102, 126, 234, 0.1) 100%);
+@media (hover: hover) and (pointer: fine) {
+  .legal-menu-item:hover {
+    background: linear-gradient(135deg, rgba(155, 93, 229, 0.1) 0%, rgba(102, 126, 234, 0.1) 100%);
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .legal-menu-item:active {
+    background: linear-gradient(135deg, rgba(155, 93, 229, 0.1) 0%, rgba(102, 126, 234, 0.1) 100%);
+  }
 }
 
 .legal-menu-item:last-child {
@@ -367,8 +390,10 @@ body.modal-open {
     border-bottom: 1px solid #9b5de5;
   }
 
-  .legal-menu-item:hover {
-    background: rgba(155, 93, 229, 0.1);
+  @media (hover: hover) and (pointer: fine) {
+    .legal-menu-item:hover {
+      background: rgba(155, 93, 229, 0.1);
+    }
   }
 }
 
@@ -386,8 +411,10 @@ body.modal-open {
     border-bottom-color: rgba(155, 93, 229, 0.2);
   }
 
-  .legal-menu-item:hover {
-    background: linear-gradient(135deg, rgba(155, 93, 229, 0.2) 0%, rgba(102, 126, 234, 0.2) 100%);
+  @media (hover: hover) and (pointer: fine) {
+    .legal-menu-item:hover {
+      background: linear-gradient(135deg, rgba(155, 93, 229, 0.2) 0%, rgba(102, 126, 234, 0.2) 100%);
+    }
   }
 
   .menu-title {
