@@ -3,22 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/puzzmoji-logo.svg" />
+    <link rel="icon" type="image/png" href="/pwa-192x192.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- SEO Básico -->
     <meta name="description" content="PuzzMoji - El juego diario de emojis. Adivina la película o serie representada por emojis. ¡Un nuevo puzzle cada día!" />
     <meta name="keywords" content="puzzmoji, emoji, puzzle, juego, wordle, películas, series, entretenimiento, viral, tiktok" />
     <meta name="author" content="PuzzMoji" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="language" content="Spanish" />
+    <meta name="geo.region" content="ES" />
+    <meta name="geo.country" content="Spain" />
+    <meta name="revisit-after" content="1 day" />
+    <meta name="rating" content="General" />
+    <link rel="canonical" href="https://playpuzzmoji.com/" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://playpuzzmoji.com/" />
     <meta property="og:title" content="PuzzMoji - Juego diario de emojis 🎭🎬📺" />
     <meta property="og:description" content="¿Puedes adivinar la película o serie por sus emojis? Juega PuzzMoji, el nuevo juego viral que desafía tu conocimiento de entretenimiento. ¡Un nuevo puzzle cada día!" />
-    <meta property="og:image" content="https://playpuzzmoji.com/puzzmoji-logo.svg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:image" content="https://playpuzzmoji.com/og-image.png" />
+    <meta property="og:image:alt" content="PuzzMoji - Juego diario de emojis" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
     <meta property="og:site_name" content="PuzzMoji" />
     <meta property="og:locale" content="es_ES" />
     
@@ -27,7 +37,8 @@
     <meta name="twitter:url" content="https://playpuzzmoji.com/" />
     <meta name="twitter:title" content="PuzzMoji - Juego diario de emojis 🎭🎬📺" />
     <meta name="twitter:description" content="¿Puedes adivinar la película o serie por sus emojis? Juega PuzzMoji, el nuevo juego viral que desafía tu conocimiento de entretenimiento. ¡Un nuevo puzzle cada día!" />
-    <meta name="twitter:image" content="https://playpuzzmoji.com/puzzmoji-logo.svg" />
+    <meta name="twitter:image" content="https://playpuzzmoji.com/og-image.png" />
+    <meta name="twitter:image:alt" content="PuzzMoji - Juego diario de emojis" />
     <meta name="twitter:creator" content="@puzzmoji" />
     
     <!-- PWA -->
@@ -55,6 +66,75 @@
             crossorigin="anonymous"></script>
     
     <title>PuzzMoji - Juego diario de emojis 🎭🎬📺</title>
+    
+    <!-- Structured Data for Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": ["WebSite", "Game", "WebApplication"],
+      "name": "PuzzMoji",
+      "alternateName": "PuzzMoji - Juego diario de emojis",
+      "url": "https://playpuzzmoji.com",
+      "logo": "https://playpuzzmoji.com/pwa-512x512.png",
+      "description": "Juego diario de puzzles con emojis. Adivina películas y series representadas por emojis. Un nuevo desafío cada día.",
+      "inLanguage": "es-ES",
+      "genre": "Puzzle Game",
+      "gameLocation": "Online",
+      "applicationCategory": "Game",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "PuzzMoji Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "PuzzMoji",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://playpuzzmoji.com/pwa-512x512.png",
+          "width": 512,
+          "height": 512
+        }
+      },
+      "potentialAction": [
+        {
+          "@type": "PlayAction",
+          "target": "https://playpuzzmoji.com"
+        },
+        {
+          "@type": "SearchAction",
+          "target": "https://playpuzzmoji.com/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      ],
+      "mainEntity": {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "¿Cómo se juega a PuzzMoji?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Adivina la película o serie representada por emojis. Tienes 6 intentos y los emojis se revelan progresivamente con cada fallo."
+            }
+          },
+          {
+            "@type": "Question", 
+            "name": "¿Con qué frecuencia hay nuevos puzzles?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Hay un nuevo puzzle cada día. Vuelve diariamente para un nuevo desafío."
+            }
+          }
+        ]
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
