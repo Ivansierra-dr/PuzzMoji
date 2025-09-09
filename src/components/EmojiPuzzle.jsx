@@ -109,7 +109,7 @@ const EmojiPuzzle = () => {
       setVisibleEmojis(allEmojis);
       setGameStatus('won');
       await saveGameState(newAttempts, 'won', allEmojis);
-      await updateStats(true);
+      await updateStats(true, newAttempts.length);
     } else {
       // Revelar siguiente emoji si es un fallo y aún hay emojis ocultos
       const failedAttempts = newAttempts.filter(attempt => {
@@ -127,7 +127,7 @@ const EmojiPuzzle = () => {
         const allEmojis = currentPuzzle.emojis.length;
         setVisibleEmojis(allEmojis);
         await saveGameState(newAttempts, 'lost', allEmojis);
-        await updateStats(false);
+        await updateStats(false, 6);
       } else {
         await saveGameState(newAttempts, 'playing', newVisibleEmojis);
       }
@@ -137,7 +137,7 @@ const EmojiPuzzle = () => {
     setUserInput('');
   };
 
-  const updateStats = async (won) => {
+  const updateStats = async (won, attemptsCount) => {
     const stats = JSON.parse(localStorage.getItem('puzzmoji_stats') || '{}');
     const today = await dateService.getRealDate();
     
@@ -146,8 +146,18 @@ const EmojiPuzzle = () => {
     if (!stats.currentStreak) stats.currentStreak = 0;
     if (!stats.maxStreak) stats.maxStreak = 0;
     if (!stats.lastPlayed) stats.lastPlayed = null;
+    if (!stats.attemptsHistory) stats.attemptsHistory = [];
+    if (!stats.totalAttempts) stats.totalAttempts = 0;
+    if (!stats.gamesWithAttempts) stats.gamesWithAttempts = 0;
     
     stats.gamesPlayed++;
+    
+    // Registrar intentos para el cálculo de la media
+    if (attemptsCount) {
+      stats.attemptsHistory.push(attemptsCount);
+      stats.totalAttempts += attemptsCount;
+      stats.gamesWithAttempts++;
+    }
     
     if (won) {
       stats.gamesWon++;

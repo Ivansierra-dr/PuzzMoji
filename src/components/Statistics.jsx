@@ -7,7 +7,8 @@ const Statistics = ({ isOpen, onClose }) => {
     gamesWon: 0,
     currentStreak: 0,
     maxStreak: 0,
-    winPercentage: 0
+    winPercentage: 0,
+    averageAttempts: 0
   });
 
   useEffect(() => {
@@ -22,13 +23,19 @@ const Statistics = ({ isOpen, onClose }) => {
       ? Math.round((savedStats.gamesWon / savedStats.gamesPlayed) * 100) 
       : 0;
     
+    // Calcular media de intentos
+    const averageAttempts = savedStats.gamesWithAttempts > 0
+      ? (savedStats.totalAttempts / savedStats.gamesWithAttempts).toFixed(1)
+      : '-';
+    
     setStats({
       ...savedStats,
       gamesPlayed: savedStats.gamesPlayed || 0,
       gamesWon: savedStats.gamesWon || 0,
       currentStreak: savedStats.currentStreak || 0,
       maxStreak: savedStats.maxStreak || 0,
-      winPercentage
+      winPercentage,
+      averageAttempts
     });
   };
 
@@ -63,6 +70,16 @@ const Statistics = ({ isOpen, onClose }) => {
             <div className="stat-value">{stats.maxStreak}</div>
             <div className="stat-label">Mejor racha</div>
           </div>
+          
+          <div className="stat-item">
+            <div className="stat-value">{stats.averageAttempts}</div>
+            <div className="stat-label">Media intentos</div>
+          </div>
+          
+          <div className="stat-item">
+            <div className="stat-value">{stats.gamesWon}</div>
+            <div className="stat-label">Ganadas</div>
+          </div>
         </div>
         
         <div className="achievement-section">
@@ -82,6 +99,12 @@ const Statistics = ({ isOpen, onClose }) => {
             )}
             {stats.maxStreak >= 10 && (
               <div className="achievement">👑 Maestro PuzzMoji</div>
+            )}
+            {stats.averageAttempts !== '-' && stats.averageAttempts <= 3.0 && stats.gamesWithAttempts >= 5 && (
+              <div className="achievement">🎯 Acierto rápido</div>
+            )}
+            {stats.gamesWithAttempts >= 10 && (
+              <div className="achievement">📈 Estadístico</div>
             )}
           </div>
         </div>
