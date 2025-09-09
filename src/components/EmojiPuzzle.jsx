@@ -12,9 +12,14 @@ const EmojiPuzzle = () => {
   const [attemptsLeft, setAttemptsLeft] = useState(6);
   const [isLoadingDate, setIsLoadingDate] = useState(true);
   const [dateError, setDateError] = useState(false);
+  const [visibleEmojis, setVisibleEmojis] = useState(1);
 
-  const loadTodaysPuzzle = async () => {
+
+  const initializeGame = useCallback(async () => {
     try {
+      setIsLoadingDate(true);
+      
+      // Primero cargar el puzzle del día
       const today = await dateService.getRealDate();
       console.log('Real date from server:', today);
       
@@ -23,9 +28,9 @@ const EmojiPuzzle = () => {
       
       // Si no hay puzzle para hoy, calcular basado en días transcurridos
       if (!puzzle && puzzlesData.length > 0) {
-        const baseDate = puzzlesData[0].date; // Primera fecha en el array
+        const baseDate = puzzlesData[0].date;
         const daysSince = await dateService.getDaysSinceDate(baseDate);
-        const puzzleIndex = daysSince % puzzlesData.length; // Ciclar los puzzles
+        const puzzleIndex = daysSince % puzzlesData.length;
         puzzle = puzzlesData[puzzleIndex];
         console.log(`No exact date match, using puzzle index ${puzzleIndex} (${daysSince} days since ${baseDate})`);
       }
@@ -36,32 +41,34 @@ const EmojiPuzzle = () => {
       }
       
       setCurrentPuzzle(puzzle);
-    } catch (error) {
-      console.error('Error loading today\'s puzzle:', error);
-      // Fallback al primer puzzle
-      setCurrentPuzzle(puzzlesData[0]);
-      throw error;
-    }
-  };
-
-  const loadGameState = async () => {
-    const savedState = localStorage.getItem('puzzmoji_gameState');
-    if (savedState) {
-      const state = JSON.parse(savedState);
-      const today = await dateService.getRealDate();
-      if (state.date === today) {
-        setAttempts(state.attempts || []);
-        setGameStatus(state.status || 'playing');
-        setAttemptsLeft(6 - (state.attempts?.length || 0));
+      
+      // Luego cargar el estado del juego con el puzzle ya disponible
+      const savedState = localStorage.getItem('puzzmoji_gameState');
+      if (savedState) {
+        const state = JSON.parse(savedState);
+        if (state.date === today) {
+          setAttempts(state.attempts || []);
+          setGameStatus(state.status || 'playing');
+          setAttemptsLeft(6 - (state.attempts?.length || 0));
+          
+          // Si el juego terminó (ganado o perdido), mostrar todos los emojis
+          if (state.status === 'won' || state.status === 'lost') {
+            setVisibleEmojis(puzzle.emojis.length);
+          } else {
+            // Si está en progreso, usar el estado guardado o calcular basado en intentos fallidos
+            if (state.visibleEmojis !== undefined) {
+              setVisibleEmojis(state.visibleEmojis);
+            } else {
+              const failedAttempts = (state.attempts || []).filter(attempt => {
+                const normalizedAttempt = attempt.trim().toLowerCase();
+                return !puzzle.answer.includes(normalizedAttempt);
+              }).length;
+              setVisibleEmojis(Math.min(1 + failedAttempts, puzzle.emojis.length));
+            }
+          }
+        }
       }
-    }
-  };
-
-  const initializeGame = useCallback(async () => {
-    try {
-      setIsLoadingDate(true);
-      await loadTodaysPuzzle();
-      await loadGameState();
+      
       setDateError(false);
     } catch (error) {
       console.error('Error initializing game:', error);
@@ -77,12 +84,13 @@ const EmojiPuzzle = () => {
     initializeGame();
   }, [initializeGame]);
 
-  const saveGameState = async (newAttempts, status) => {
+  const saveGameState = async (newAttempts, status, newVisibleEmojis) => {
     const today = await dateService.getRealDate();
     const state = {
       date: today,
       attempts: newAttempts,
-      status: status
+      status: status,
+      visibleEmojis: newVisibleEmojis || visibleEmojis
     };
     localStorage.setItem('puzzmoji_gameState', JSON.stringify(state));
   };
@@ -96,15 +104,33 @@ const EmojiPuzzle = () => {
     setAttempts(newAttempts);
     
     if (currentPuzzle.answer.includes(normalizedInput)) {
+      // Revelar todos los emojis al ganar
+      const allEmojis = currentPuzzle.emojis.length;
+      setVisibleEmojis(allEmojis);
       setGameStatus('won');
-      await saveGameState(newAttempts, 'won');
+      await saveGameState(newAttempts, 'won', allEmojis);
       await updateStats(true);
-    } else if (newAttempts.length >= 6) {
-      setGameStatus('lost');
-      await saveGameState(newAttempts, 'lost');
-      await updateStats(false);
     } else {
-      await saveGameState(newAttempts, 'playing');
+      // Revelar siguiente emoji si es un fallo y aún hay emojis ocultos
+      const failedAttempts = newAttempts.filter(attempt => {
+        const normalizedAttempt = attempt.trim().toLowerCase();
+        return !currentPuzzle.answer.includes(normalizedAttempt);
+      }).length;
+      
+      // Revelar un emoji más por cada fallo, hasta un máximo de 3
+      const newVisibleEmojis = Math.min(1 + failedAttempts, currentPuzzle.emojis.length);
+      setVisibleEmojis(newVisibleEmojis);
+      
+      if (newAttempts.length >= 6) {
+        setGameStatus('lost');
+        // Al perder, también mostrar todos los emojis
+        const allEmojis = currentPuzzle.emojis.length;
+        setVisibleEmojis(allEmojis);
+        await saveGameState(newAttempts, 'lost', allEmojis);
+        await updateStats(false);
+      } else {
+        await saveGameState(newAttempts, 'playing', newVisibleEmojis);
+      }
     }
     
     setAttemptsLeft(6 - newAttempts.length);
@@ -207,9 +233,17 @@ const EmojiPuzzle = () => {
       <div className="puzzle-container">
         <div className="emoji-display">
           {currentPuzzle.emojis.map((emoji, index) => (
-            <span key={index} className="emoji">{emoji}</span>
+            <span key={index} className={`emoji ${index >= visibleEmojis ? 'emoji-hidden' : ''}`}>
+              {index < visibleEmojis ? emoji : '❓'}
+            </span>
           ))}
         </div>
+        
+        {visibleEmojis < currentPuzzle.emojis.length && gameStatus === 'playing' && (
+          <div className="emoji-reveal-hint">
+            {visibleEmojis === 1 ? `${currentPuzzle.emojis.length - visibleEmojis} emojis más se revelarán con cada intento fallido` : `Aún quedan ${currentPuzzle.emojis.length - visibleEmojis} emoji${currentPuzzle.emojis.length - visibleEmojis > 1 ? 's' : ''} por revelar`}
+          </div>
+        )}
         
         {showHint && (
           <div className="hint">

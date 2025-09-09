@@ -96,6 +96,85 @@
   75% { transform: translateY(-8px) rotate(-2deg); }
 }
 
+.emoji-hidden {
+  background: rgba(155, 93, 229, 0.1);
+  border: 3px dashed rgba(155, 93, 229, 0.4);
+  border-radius: 20px;
+  min-width: 75px;
+  min-height: 75px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulseHidden 2s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.emoji-hidden::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(155, 93, 229, 0.2), transparent);
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  to { left: 100%; }
+}
+
+@keyframes pulseHidden {
+  0%, 100% { 
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% { 
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+.emoji-reveal-hint {
+  text-align: center;
+  color: rgba(124, 58, 237, 0.7);
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: -5px;
+  margin-bottom: 20px;
+  padding: 6px 12px;
+  background: rgba(155, 93, 229, 0.05);
+  border-radius: 15px;
+  border: 1px solid rgba(155, 93, 229, 0.1);
+  animation: fadeIn 0.5s ease-out;
+  opacity: 0.8;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.emoji:not(.emoji-hidden) {
+  animation: revealEmoji 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, 
+             float 3s ease-in-out infinite 0.6s;
+}
+
+@keyframes revealEmoji {
+  0% {
+    transform: scale(0) rotate(180deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) rotate(90deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
 
 .hint {
   text-align: center;
