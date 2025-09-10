@@ -34,7 +34,7 @@
   {
     "id": 5,
     "date": "2025-09-11",
-    "emojis": ["🦈", "🏖️", "🩸"],
+    "emojis": ["🩸","🦈", "🏖️" ],
     "answer": ["tiburon", "jaws", "tiburón"],
     "category": "película",
     "hint": "Terror en la playa"
