@@ -53,6 +53,18 @@ function App() {
     setShowLegalMenu(false); // Reset legal menu state when going back to landing
   };
 
+  const showHowToPlay = () => {
+    setShowLanding(true);
+    setShowLegalMenu(false);
+    // Después de mostrar la landing, hacer scroll a la sección de cómo jugar
+    setTimeout(() => {
+      const howToPlaySection = document.getElementById('how-to-play');
+      if (howToPlaySection) {
+        howToPlaySection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
+
   if (showLanding) {
     return <LandingPage onStartGame={startGame} />;
   }
@@ -73,7 +85,7 @@ function App() {
         <div className="header-buttons">
           <button 
             className="info-button"
-            onClick={showLandingPage}
+            onClick={showHowToPlay}
             aria-label="Información del juego"
             title="¿Cómo jugar?"
           >

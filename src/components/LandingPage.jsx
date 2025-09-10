@@ -83,7 +83,7 @@ const LandingPage = ({ onStartGame }) => {
         </div>
       )}
       
-      <div className="how-to-play">
+      <div className="how-to-play" id="how-to-play">
         <h2>¿Cómo jugar?</h2>
         <div className="steps">
           <div className="step">
@@ -100,6 +100,10 @@ const LandingPage = ({ onStartGame }) => {
           </div>
           <div className="step">
             <span className="step-number">4</span>
+            <p>Con cada fallo, se revelan más emojis</p>
+          </div>
+          <div className="step">
+            <span className="step-number">5</span>
             <p>¡Comparte tu resultado!</p>
           </div>
         </div>

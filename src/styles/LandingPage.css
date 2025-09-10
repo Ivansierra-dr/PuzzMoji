@@ -289,11 +289,12 @@
 }
 
 .steps {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 30px;
   max-width: 1000px;
   margin: 0 auto;
+  justify-content: center;
 }
 
 .step {
@@ -301,6 +302,8 @@
   flex-direction: column;
   align-items: center;
   gap: 15px;
+  flex: 0 1 200px;
+  min-width: 180px;
 }
 
 .step-number {
@@ -400,8 +403,13 @@
   }
   
   .steps {
-    grid-template-columns: 1fr;
     gap: 20px;
+    justify-content: center;
+  }
+  
+  .step {
+    flex: 0 1 100%;
+    max-width: 300px;
   }
   
   .social-links {
