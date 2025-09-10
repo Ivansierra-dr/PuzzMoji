@@ -626,14 +626,29 @@
   }
 }
 
+/* Media queries para móviles pequeños */
 @media (max-width: 480px) {
+  .emoji-puzzle {
+    padding: 10px;
+  }
+  
+  .puzzle-container {
+    padding: 20px 15px;
+  }
+  
   .emoji {
-    font-size: 45px;
+    font-size: 40px;
   }
   
   .emoji-display {
-    gap: 10px;
-    padding: 15px;
+    gap: 8px;
+    padding: 15px 10px;
+    margin-bottom: 20px;
+  }
+  
+  .emoji-hidden {
+    min-width: 45px;
+    min-height: 45px;
   }
   
   .input-form {
@@ -654,5 +669,47 @@
   
   .loading-container p {
     font-size: 16px;
+  }
+  
+  .emoji-reveal-hint {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+}
+
+/* Media queries para móviles medianos y tablets pequeñas */
+@media (min-width: 481px) and (max-width: 768px) {
+  .emoji {
+    font-size: 50px;
+  }
+  
+  .emoji-display {
+    gap: 12px;
+    padding: 20px 15px;
+  }
+  
+  .emoji-hidden {
+    min-width: 55px;
+    min-height: 55px;
+  }
+  
+  .puzzle-container {
+    padding: 25px 20px;
+  }
+  
+  .emoji-reveal-hint {
+    font-size: 13px;
+  }
+}
+
+/* Media queries para tablets y pantallas medianas */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .emoji {
+    font-size: 60px;
+  }
+  
+  .emoji-hidden {
+    min-width: 65px;
+    min-height: 65px;
   }
 }

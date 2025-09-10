@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import TwemojiText from './TwemojiText';
 import '../styles/Statistics.css';
 
 const Statistics = ({ isOpen, onClose }) => {
@@ -46,7 +47,7 @@ const Statistics = ({ isOpen, onClose }) => {
     <div className="statistics-overlay" onClick={onClose}>
       <div className="statistics-modal" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
-          <h2>📊 Estadísticas</h2>
+          <h2><TwemojiText text="📊" size={24} /> Estadísticas</h2>
           <button className="close-btn" onClick={onClose}>✕</button>
         </div>
         
@@ -83,28 +84,28 @@ const Statistics = ({ isOpen, onClose }) => {
         </div>
         
         <div className="achievement-section">
-          <h3>🏆 Logros</h3>
+          <h3><TwemojiText text="🏆" size={20} /> Logros</h3>
           <div className="achievements">
             {stats.gamesPlayed >= 1 && (
-              <div className="achievement">🎮 Primera partida</div>
+              <div className="achievement"><TwemojiText text="🎮" size={18} /> Primera partida</div>
             )}
             {stats.gamesWon >= 1 && (
-              <div className="achievement">✨ Primera victoria</div>
+              <div className="achievement"><TwemojiText text="✨" size={18} /> Primera victoria</div>
             )}
             {stats.currentStreak >= 3 && (
-              <div className="achievement">🔥 Racha de 3 días</div>
+              <div className="achievement"><TwemojiText text="🔥" size={18} /> Racha de 3 días</div>
             )}
             {stats.currentStreak >= 7 && (
-              <div className="achievement">💫 Semana perfecta</div>
+              <div className="achievement"><TwemojiText text="💫" size={18} /> Semana perfecta</div>
             )}
             {stats.maxStreak >= 10 && (
-              <div className="achievement">👑 Maestro PuzzMoji</div>
+              <div className="achievement"><TwemojiText text="👑" size={18} /> Maestro PuzzMoji</div>
             )}
             {stats.averageAttempts !== '-' && stats.averageAttempts <= 3.0 && stats.gamesWithAttempts >= 5 && (
-              <div className="achievement">🎯 Acierto rápido</div>
+              <div className="achievement"><TwemojiText text="🎯" size={18} /> Acierto rápido</div>
             )}
             {stats.gamesWithAttempts >= 10 && (
-              <div className="achievement">📈 Estadístico</div>
+              <div className="achievement"><TwemojiText text="📈" size={18} /> Estadístico</div>
             )}
           </div>
         </div>

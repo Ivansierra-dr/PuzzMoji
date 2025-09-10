@@ -1,7 +1,39 @@
 import { useState, useEffect, useCallback } from 'react';
 import puzzlesData from '../data/puzzles.json';
 import dateService from '../utils/dateService';
+import TwemojiText from './TwemojiText';
 import '../styles/EmojiPuzzle.css';
+
+// Hook personalizado para detectar el tamaño de pantalla
+const useResponsiveEmojiSize = () => {
+  const [emojiSize, setEmojiSize] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const width = window.innerWidth;
+      if (width <= 480) return 40; // Móviles pequeños
+      if (width <= 768) return 50; // Móviles grandes/tablets
+      return 65; // Desktop
+    }
+    return 65;
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width <= 480) {
+        setEmojiSize(40);
+      } else if (width <= 768) {
+        setEmojiSize(50);
+      } else {
+        setEmojiSize(65);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return emojiSize;
+};
 
 const EmojiPuzzle = () => {
   const [currentPuzzle, setCurrentPuzzle] = useState(null);
@@ -13,6 +45,7 @@ const EmojiPuzzle = () => {
   const [isLoadingDate, setIsLoadingDate] = useState(true);
   const [dateError, setDateError] = useState(false);
   const [visibleEmojis, setVisibleEmojis] = useState(1);
+  const emojiSize = useResponsiveEmojiSize();
 
 
   const initializeGame = useCallback(async () => {
@@ -225,11 +258,11 @@ const EmojiPuzzle = () => {
       <div className="emoji-puzzle">
         <div className="puzzle-container">
           <div className="loading-container">
-            <div className="loading-emoji">🎭</div>
+            <div className="loading-emoji"><TwemojiText text="🎭" size={72} /></div>
             <p>Obteniendo puzzle del día...</p>
             {dateError && (
               <p className="error-text">
-                ⚠️ Usando modo offline (fecha local)
+                <TwemojiText text="⚠️" size={16} /> Usando modo offline (fecha local)
               </p>
             )}
           </div>
@@ -243,9 +276,12 @@ const EmojiPuzzle = () => {
       <div className="puzzle-container">
         <div className="emoji-display">
           {currentPuzzle.emojis.map((emoji, index) => (
-            <span key={index} className={`emoji ${index >= visibleEmojis ? 'emoji-hidden' : ''}`}>
-              {index < visibleEmojis ? emoji : '❓'}
-            </span>
+            <TwemojiText 
+              key={index} 
+              text={index < visibleEmojis ? emoji : '❓'} 
+              size={emojiSize} 
+              className={`emoji ${index >= visibleEmojis ? 'emoji-hidden' : ''}`}
+            />
           ))}
         </div>
         
@@ -257,9 +293,9 @@ const EmojiPuzzle = () => {
         
         {showHint && (
           <div className="hint">
-            💡 {currentPuzzle.hint}
+            <TwemojiText text="💡" size={20} /> {currentPuzzle.hint}
             <br />
-            📂 Categoría: {currentPuzzle.category}
+            <TwemojiText text="📂" size={20} /> Categoría: {currentPuzzle.category}
           </div>
         )}
         
@@ -284,7 +320,7 @@ const EmojiPuzzle = () => {
               <span className="attempts-left">Intentos: {attemptsLeft}/6</span>
               {!showHint && (
                 <button onClick={getHint} className="hint-btn">
-                  💡 Pista
+                  <TwemojiText text="💡" size={16} /> Pista
                 </button>
               )}
             </div>
@@ -297,7 +333,7 @@ const EmojiPuzzle = () => {
             const isCorrect = currentPuzzle.answer.includes(normalizedAttempt);
             return (
               <div key={index} className={`attempt ${isCorrect ? 'correct' : 'incorrect'}`}>
-                {attempt} {isCorrect ? '✅' : '❌'}
+                {attempt} <TwemojiText text={isCorrect ? '✅' : '❌'} size={20} />
               </div>
             );
           })}
@@ -307,18 +343,18 @@ const EmojiPuzzle = () => {
           <div className="game-over">
             {gameStatus === 'won' ? (
               <div className="success">
-                <h2>¡Correcto! 🎉</h2>
+                <h2>¡Correcto! <TwemojiText text="🎉" size={30} /></h2>
                 <p>Lo lograste en {attempts.length} intento{attempts.length > 1 ? 's' : ''}</p>
               </div>
             ) : (
               <div className="failure">
-                <h2>¡Se acabaron los intentos! 😔</h2>
+                <h2>¡Se acabaron los intentos! <TwemojiText text="😔" size={30} /></h2>
                 <p>La respuesta era: <strong>{currentPuzzle.answer[0]}</strong></p>
               </div>
             )}
             
             <button onClick={shareResult} className="share-btn">
-              📤 Compartir resultado
+              <TwemojiText text="📤" size={20} /> Compartir resultado
             </button>
             
             <div className="next-puzzle">
