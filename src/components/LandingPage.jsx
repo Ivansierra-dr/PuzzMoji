@@ -96,7 +96,7 @@ const LandingPage = ({ onStartGame }) => {
           </div>
           <div className="step">
             <span className="step-number">3</span>
-            <p>Tienes 6 intentos para acertar</p>
+            <p>Tienes 4 intentos para acertar</p>
           </div>
           <div className="step">
             <span className="step-number">4</span>

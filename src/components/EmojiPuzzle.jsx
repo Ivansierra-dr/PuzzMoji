@@ -41,7 +41,7 @@ const EmojiPuzzle = () => {
   const [attempts, setAttempts] = useState([]);
   const [gameStatus, setGameStatus] = useState('playing');
   const [showHint, setShowHint] = useState(false);
-  const [attemptsLeft, setAttemptsLeft] = useState(6);
+  const [attemptsLeft, setAttemptsLeft] = useState(4);
   const [isLoadingDate, setIsLoadingDate] = useState(true);
   const [dateError, setDateError] = useState(false);
   const [visibleEmojis, setVisibleEmojis] = useState(1);
@@ -82,7 +82,7 @@ const EmojiPuzzle = () => {
         if (state.date === today) {
           setAttempts(state.attempts || []);
           setGameStatus(state.status || 'playing');
-          setAttemptsLeft(6 - (state.attempts?.length || 0));
+          setAttemptsLeft(4 - (state.attempts?.length || 0));
           
           // Si el juego terminó (ganado o perdido), mostrar todos los emojis
           if (state.status === 'won' || state.status === 'lost') {
@@ -154,19 +154,19 @@ const EmojiPuzzle = () => {
       const newVisibleEmojis = Math.min(1 + failedAttempts, currentPuzzle.emojis.length);
       setVisibleEmojis(newVisibleEmojis);
       
-      if (newAttempts.length >= 6) {
+      if (newAttempts.length >= 4) {
         setGameStatus('lost');
         // Al perder, también mostrar todos los emojis
         const allEmojis = currentPuzzle.emojis.length;
         setVisibleEmojis(allEmojis);
         await saveGameState(newAttempts, 'lost', allEmojis);
-        await updateStats(false, 6);
+        await updateStats(false, 4);
       } else {
         await saveGameState(newAttempts, 'playing', newVisibleEmojis);
       }
     }
     
-    setAttemptsLeft(6 - newAttempts.length);
+    setAttemptsLeft(4 - newAttempts.length);
     setUserInput('');
   };
 
@@ -223,7 +223,7 @@ const EmojiPuzzle = () => {
       return currentPuzzle.answer.includes(normalizedAttempt) ? '🟩' : '🟥';
     }).join('');
     
-    const resultIcon = attemptsLeft === 0 ? '❌' : `✅ ${attempts.length}/6`;
+    const resultIcon = attemptsLeft === 0 ? '❌' : `✅ ${attempts.length}/4`;
     const encouragement = attemptsLeft === 0 
       ? '¡Era complicado! 🤔 ¿Te animas con el de mañana?' 
       : `¡Lo conseguí en ${attempts.length} intento${attempts.length > 1 ? 's' : ''}! 🎉`;
@@ -317,7 +317,7 @@ const EmojiPuzzle = () => {
             </form>
             
             <div className="game-info">
-              <span className="attempts-left">Intentos: {attemptsLeft}/6</span>
+              <span className="attempts-left">Intentos: {attemptsLeft}/4</span>
               {!showHint && (
                 <button onClick={getHint} className="hint-btn">
                   <TwemojiText text="💡" size={16} /> Pista
