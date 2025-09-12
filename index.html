@@ -2,8 +2,13 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
+    <!-- Favicon principal - SVG para navegadores modernos -->
     <link rel="icon" type="image/svg+xml" href="/puzzmoji-logo.svg" />
-    <link rel="icon" type="image/png" href="/pwa-192x192.png" />
+    <!-- Fallback para navegadores que no soportan SVG -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/pwa-192x192.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/pwa-192x192.png" />
+    <!-- Shortcut icon para compatibilidad con navegadores antiguos -->
+    <link rel="shortcut icon" href="/puzzmoji-logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- SEO Básico -->
@@ -75,7 +80,8 @@
       "name": "PuzzMoji",
       "alternateName": "PuzzMoji - Juego diario de emojis",
       "url": "https://playpuzzmoji.com",
-      "logo": "https://playpuzzmoji.com/pwa-512x512.png",
+      "logo": "https://playpuzzmoji.com/puzzmoji-logo.svg",
+      "image": "https://playpuzzmoji.com/pwa-512x512.png",
       "description": "Juego diario de puzzles con emojis. Adivina películas y series representadas por emojis. Un nuevo desafío cada día.",
       "inLanguage": "es-ES",
       "genre": "Puzzle Game",
@@ -96,7 +102,7 @@
         "name": "PuzzMoji",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://playpuzzmoji.com/pwa-512x512.png",
+          "url": "https://playpuzzmoji.com/puzzmoji-logo.svg",
           "width": 512,
           "height": 512
         }
