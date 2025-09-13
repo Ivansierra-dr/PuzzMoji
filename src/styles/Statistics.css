@@ -78,14 +78,14 @@
   transform: scale(1.1);
 }
 
-.stats-grid {
+.statistics-modal .stats-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   margin-bottom: 30px;
 }
 
-.stat-item {
+.statistics-modal .stat-item {
   text-align: center;
   padding: 20px;
   background: linear-gradient(135deg, rgba(155, 93, 229, 0.1) 0%, rgba(241, 91, 181, 0.1) 100%);
@@ -94,7 +94,7 @@
   box-shadow: 0 4px 15px rgba(155, 93, 229, 0.1);
 }
 
-.stat-value {
+.statistics-modal .stat-value {
   font-size: 36px;
   font-weight: 800;
   color: #9b5de5;
@@ -102,7 +102,7 @@
   text-shadow: 0 2px 4px rgba(155, 93, 229, 0.2);
 }
 
-.stat-label {
+.statistics-modal .stat-label {
   font-size: 14px;
   color: #7c3aed;
   text-transform: uppercase;
@@ -151,7 +151,8 @@
     font-size: 28px;
   }
   
-  .stats-grid {
+  .statistics-modal .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
   }
 }
