@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import EmojiPuzzle from './components/EmojiPuzzle';
 import Statistics from './components/Statistics';
 import LandingPage from './components/LandingPage';
+import AboutPage from './components/AboutPage';
+import TriviaBlog from './components/TriviaBlog';
 import PWAPrompt from './components/PWAPrompt';
 import AdBanner from './components/AdBanner';
 import LegalMenu from './components/LegalMenu';
@@ -25,6 +27,8 @@ if (import.meta.env.DEV) {
 function App() {
   const [showStats, setShowStats] = useState(false);
   const [showLanding, setShowLanding] = useState(false);
+  const [showAbout, setShowAbout] = useState(false);
+  const [showTrivia, setShowTrivia] = useState(false);
   const [showPrivacy, setShowPrivacy] = useState(false);
   const [showTerms, setShowTerms] = useState(false);
   const [showContact, setShowContact] = useState(false);
@@ -65,6 +69,15 @@ function App() {
     }, 100);
   };
 
+  // Páginas principales - fuera del condicional para que funcionen desde cualquier lugar
+  if (showAbout) {
+    return <AboutPage onClose={() => setShowAbout(false)} />;
+  }
+
+  if (showTrivia) {
+    return <TriviaBlog onClose={() => setShowTrivia(false)} />;
+  }
+
   if (showLanding) {
     return <LandingPage onStartGame={startGame} />;
   }
@@ -83,7 +96,7 @@ function App() {
           />
         </div>
         <div className="header-buttons">
-          <button 
+          <button
             className="info-button"
             onClick={showHowToPlay}
             aria-label="Información del juego"
@@ -91,7 +104,7 @@ function App() {
           >
             ℹ️
           </button>
-          <button 
+          <button
             className="stats-button"
             onClick={() => setShowStats(true)}
             aria-label="Ver estadísticas"
@@ -108,6 +121,14 @@ function App() {
       <main className="app-main">
         {showLegalMenu ? (
           <LegalMenuPage
+            onAboutClick={() => {
+              setShowLegalMenu(false);
+              setShowAbout(true);
+            }}
+            onTriviaClick={() => {
+              setShowLegalMenu(false);
+              setShowTrivia(true);
+            }}
             onPrivacyClick={() => {
               setShowLegalMenu(false);
               setShowPrivacy(true);
@@ -157,21 +178,21 @@ function App() {
           setShowLegalMenu(true); // Return to legal menu
         }} />
       )}
-      
+
       {showTerms && (
         <TermsOfService onClose={() => {
           setShowTerms(false);
           setShowLegalMenu(true); // Return to legal menu
         }} />
       )}
-      
+
       {showContact && (
         <ContactPage onClose={() => {
           setShowContact(false);
           setShowLegalMenu(true); // Return to legal menu
         }} />
       )}
-      
+
       {showLegal && (
         <LegalNotice onClose={() => {
           setShowLegal(false);

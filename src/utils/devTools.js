@@ -28,10 +28,15 @@ class DevTools {
 
   enableDevMode() {
     console.log('🛠️ DEV MODE ACTIVATED');
-    
+
+    // Inicializar índice de puzzle actual
+    this.currentPuzzleIndex = 0;
+    this.puzzles = [];
+    this.loadPuzzles();
+
     // Agregar botón dev al DOM
     this.addDevButton();
-    
+
     // Exponer funciones dev al window
     window.devTools = {
       shufflePuzzles: this.shufflePuzzles.bind(this),
@@ -40,7 +45,11 @@ class DevTools {
       addPuzzle: this.addPuzzle.bind(this),
       resetGameData: this.resetGameData.bind(this),
       resetTodaysGame: this.resetTodaysGame.bind(this),
-      resetStats: this.resetStats.bind(this)
+      resetStats: this.resetStats.bind(this),
+      nextPuzzle: this.nextPuzzle.bind(this),
+      previousPuzzle: this.previousPuzzle.bind(this),
+      jumpToPuzzle: this.jumpToPuzzle.bind(this),
+      goToDate: this.goToDate.bind(this)
     };
   }
 
@@ -73,6 +82,21 @@ class DevTools {
 
       devPanel.innerHTML = `
         <div style="font-weight: bold; margin-bottom: 10px; text-align: center;">🛠️ DEV TOOLS</div>
+        <input type="date" id="dev-date-picker" style="width: 100%; padding: 6px; margin-bottom: 8px; font-size: 11px; border: 1px solid #333; border-radius: 4px; background: #222; color: white;">
+        <button onclick="window.devTools.goToDate()" style="display: block; width: 100%; margin-bottom: 8px; padding: 6px; font-size: 11px; cursor: pointer; border: none; border-radius: 4px; background: #00d2d3; color: white;">
+          📅 Go to Date
+        </button>
+        <div style="display: flex; gap: 4px; margin-bottom: 8px;">
+          <button onclick="window.devTools.previousPuzzle()" style="flex: 1; padding: 6px; font-size: 11px; cursor: pointer; border: none; border-radius: 4px; background: #5f27cd; color: white;">
+            ⬅️ Prev
+          </button>
+          <button onclick="window.devTools.nextPuzzle()" style="flex: 1; padding: 6px; font-size: 11px; cursor: pointer; border: none; border-radius: 4px; background: #5f27cd; color: white;">
+            Next ➡️
+          </button>
+        </div>
+        <div id="dev-puzzle-info" style="background: rgba(0,0,0,0.3); padding: 6px; border-radius: 4px; margin-bottom: 8px; font-size: 10px; text-align: center;">
+          Puzzle: Loading...
+        </div>
         <button onclick="window.devTools.shufflePuzzles()" style="display: block; width: 100%; margin: 3px 0; padding: 6px; font-size: 11px; cursor: pointer; border: none; border-radius: 4px; background: #ff4757; color: white;">
           🎲 Shuffle Puzzles
         </button>
@@ -96,6 +120,13 @@ class DevTools {
 
       document.body.appendChild(devPanel);
       console.log('📍 Dev panel added to DOM');
+
+      // Establecer fecha actual en el selector
+      const datePicker = document.getElementById('dev-date-picker');
+      if (datePicker && this.puzzles.length > 0) {
+        const currentPuzzle = this.puzzles[this.currentPuzzleIndex];
+        datePicker.value = currentPuzzle.date;
+      }
     };
 
     if (document.readyState === 'loading') {
@@ -231,6 +262,118 @@ class DevTools {
   addPuzzle(emojis, answers, category, hint) {
     console.log('🎯 New puzzle added:', { emojis, answers, category, hint });
     // Esta sería para agregar puzzles dinámicamente
+  }
+
+  async loadPuzzles() {
+    try {
+      const response = await fetch('/src/data/puzzles.json');
+      this.puzzles = await response.json();
+      console.log(`📚 Loaded ${this.puzzles.length} puzzles`);
+      this.updatePuzzleInfo();
+    } catch (error) {
+      console.error('❌ Error loading puzzles:', error);
+    }
+  }
+
+  updatePuzzleInfo() {
+    const infoElement = document.getElementById('dev-puzzle-info');
+    const datePicker = document.getElementById('dev-date-picker');
+
+    if (infoElement && this.puzzles.length > 0) {
+      const puzzle = this.puzzles[this.currentPuzzleIndex];
+      infoElement.innerHTML = `
+        <div>Puzzle #${puzzle.id} (${this.currentPuzzleIndex + 1}/${this.puzzles.length})</div>
+        <div style="font-size: 20px; margin: 4px 0;">${puzzle.emojis.join(' ')}</div>
+        <div style="opacity: 0.9;">📅 ${puzzle.date}</div>
+        <div style="opacity: 0.7; font-size: 9px;">Answer: ${puzzle.answer[0]}</div>
+      `;
+
+      // Actualizar el selector de fecha
+      if (datePicker) {
+        datePicker.value = puzzle.date;
+      }
+    }
+  }
+
+  nextPuzzle() {
+    if (this.puzzles.length === 0) {
+      this.loadPuzzles();
+      return;
+    }
+
+    this.currentPuzzleIndex = (this.currentPuzzleIndex + 1) % this.puzzles.length;
+    this.updatePuzzleInfo();
+
+    // Simular el puzzle del día
+    const puzzle = this.puzzles[this.currentPuzzleIndex];
+    localStorage.setItem('dev_override_puzzle', JSON.stringify(puzzle));
+    localStorage.removeItem('puzzmoji_gameState');
+    console.log(`➡️ Jumped to puzzle #${puzzle.id}: ${puzzle.emojis.join(' ')}`);
+    alert(`Loading puzzle #${puzzle.id}. Refreshing...`);
+    window.location.reload();
+  }
+
+  previousPuzzle() {
+    if (this.puzzles.length === 0) {
+      this.loadPuzzles();
+      return;
+    }
+
+    this.currentPuzzleIndex = this.currentPuzzleIndex === 0
+      ? this.puzzles.length - 1
+      : this.currentPuzzleIndex - 1;
+    this.updatePuzzleInfo();
+
+    // Simular el puzzle del día
+    const puzzle = this.puzzles[this.currentPuzzleIndex];
+    localStorage.setItem('dev_override_puzzle', JSON.stringify(puzzle));
+    localStorage.removeItem('puzzmoji_gameState');
+    console.log(`⬅️ Jumped to puzzle #${puzzle.id}: ${puzzle.emojis.join(' ')}`);
+    alert(`Loading puzzle #${puzzle.id}. Refreshing...`);
+    window.location.reload();
+  }
+
+  jumpToPuzzle(id) {
+    const index = this.puzzles.findIndex(p => p.id === id);
+    if (index !== -1) {
+      this.currentPuzzleIndex = index;
+      this.updatePuzzleInfo();
+
+      const puzzle = this.puzzles[this.currentPuzzleIndex];
+      localStorage.setItem('dev_override_puzzle', JSON.stringify(puzzle));
+      localStorage.removeItem('puzzmoji_gameState');
+      console.log(`🎯 Jumped to puzzle #${puzzle.id}: ${puzzle.emojis.join(' ')}`);
+      alert(`Loading puzzle #${puzzle.id}. Refreshing...`);
+      window.location.reload();
+    } else {
+      console.error(`❌ Puzzle with id ${id} not found`);
+    }
+  }
+
+  goToDate() {
+    const datePicker = document.getElementById('dev-date-picker');
+    if (!datePicker || !datePicker.value) {
+      alert('Por favor selecciona una fecha');
+      return;
+    }
+
+    const selectedDate = datePicker.value;
+    const puzzleIndex = this.puzzles.findIndex(p => p.date === selectedDate);
+
+    if (puzzleIndex !== -1) {
+      this.currentPuzzleIndex = puzzleIndex;
+      this.updatePuzzleInfo();
+
+      const puzzle = this.puzzles[puzzleIndex];
+      localStorage.setItem('dev_override_puzzle', JSON.stringify(puzzle));
+      localStorage.removeItem('puzzmoji_gameState');
+      console.log(`📅 Jumped to date ${selectedDate}: ${puzzle.emojis.join(' ')}`);
+      alert(`Loading puzzle for ${selectedDate}. Refreshing...`);
+      window.location.reload();
+    } else {
+      alert(`No hay puzzle para la fecha ${selectedDate}`);
+      console.error(`❌ No puzzle found for date ${selectedDate}`);
+    }
   }
 }
 

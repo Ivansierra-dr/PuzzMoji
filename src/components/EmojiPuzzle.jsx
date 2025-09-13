@@ -51,26 +51,35 @@ const EmojiPuzzle = () => {
   const initializeGame = useCallback(async () => {
     try {
       setIsLoadingDate(true);
-      
-      // Primero cargar el puzzle del día
-      const today = await dateService.getRealDate();
-      console.log('Real date from server:', today);
-      
-      // Buscar puzzle para la fecha actual
-      let puzzle = puzzlesData.find(p => p.date === today);
-      
-      // Si no hay puzzle para hoy, calcular basado en días transcurridos
-      if (!puzzle && puzzlesData.length > 0) {
-        const baseDate = puzzlesData[0].date;
-        const daysSince = await dateService.getDaysSinceDate(baseDate);
-        const puzzleIndex = daysSince % puzzlesData.length;
-        puzzle = puzzlesData[puzzleIndex];
-        console.log(`No exact date match, using puzzle index ${puzzleIndex} (${daysSince} days since ${baseDate})`);
-      }
-      
-      // Fallback al primer puzzle
-      if (!puzzle) {
-        puzzle = puzzlesData[0];
+
+      // Verificar si hay un puzzle override del modo dev
+      const devOverride = localStorage.getItem('dev_override_puzzle');
+      let puzzle;
+
+      if (devOverride) {
+        puzzle = JSON.parse(devOverride);
+        console.log('🛠️ Using dev override puzzle:', puzzle);
+      } else {
+        // Primero cargar el puzzle del día
+        const today = await dateService.getRealDate();
+        console.log('Real date from server:', today);
+
+        // Buscar puzzle para la fecha actual
+        puzzle = puzzlesData.find(p => p.date === today);
+
+        // Si no hay puzzle para hoy, calcular basado en días transcurridos
+        if (!puzzle && puzzlesData.length > 0) {
+          const baseDate = puzzlesData[0].date;
+          const daysSince = await dateService.getDaysSinceDate(baseDate);
+          const puzzleIndex = daysSince % puzzlesData.length;
+          puzzle = puzzlesData[puzzleIndex];
+          console.log(`No exact date match, using puzzle index ${puzzleIndex} (${daysSince} days since ${baseDate})`);
+        }
+
+        // Fallback al primer puzzle
+        if (!puzzle) {
+          puzzle = puzzlesData[0];
+        }
       }
       
       setCurrentPuzzle(puzzle);
@@ -79,7 +88,8 @@ const EmojiPuzzle = () => {
       const savedState = localStorage.getItem('puzzmoji_gameState');
       if (savedState) {
         const state = JSON.parse(savedState);
-        if (state.date === today) {
+        const dateToCheck = devOverride ? puzzle.date : (await dateService.getRealDate());
+        if (state.date === dateToCheck) {
           setAttempts(state.attempts || []);
           setGameStatus(state.status || 'playing');
           setAttemptsLeft(4 - (state.attempts?.length || 0));
