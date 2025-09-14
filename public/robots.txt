@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /manifest.json
+Disallow: /*.json$
+Disallow: /assets/
+Disallow: /_app/
 
 Sitemap: https://playpuzzmoji.com/sitemap.xml
