@@ -9,7 +9,7 @@
   <!-- Página principal -->
   <url>
     <loc>https://playpuzzmoji.com/</loc>
-    <lastmod>2025-09-09T20:00:00+00:00</lastmod>
+    <lastmod>2025-09-14T12:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <mobile:mobile/>
@@ -18,14 +18,6 @@
       <image:title>PuzzMoji Logo</image:title>
       <image:caption>PuzzMoji - Juego diario de emojis</image:caption>
     </image:image>
-  </url>
-  
-  <!-- PWA Manifest -->
-  <url>
-    <loc>https://playpuzzmoji.com/manifest.json</loc>
-    <lastmod>2025-09-07T11:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
   </url>
   
 </urlset>
