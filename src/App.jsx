@@ -4,6 +4,8 @@ import Statistics from './components/Statistics';
 import LandingPage from './components/LandingPage';
 import AboutPage from './components/AboutPage';
 import TriviaBlog from './components/TriviaBlog';
+import BlogNews from './components/BlogNews';
+import FAQPage from './components/FAQPage';
 import PWAPrompt from './components/PWAPrompt';
 import AdBanner from './components/AdBanner';
 import LegalMenu from './components/LegalMenu';
@@ -29,6 +31,8 @@ function App() {
   const [showLanding, setShowLanding] = useState(false);
   const [showAbout, setShowAbout] = useState(false);
   const [showTrivia, setShowTrivia] = useState(false);
+  const [showBlog, setShowBlog] = useState(false);
+  const [showFAQ, setShowFAQ] = useState(false);
   const [showPrivacy, setShowPrivacy] = useState(false);
   const [showTerms, setShowTerms] = useState(false);
   const [showContact, setShowContact] = useState(false);
@@ -76,6 +80,14 @@ function App() {
 
   if (showTrivia) {
     return <TriviaBlog onClose={() => setShowTrivia(false)} />;
+  }
+
+  if (showBlog) {
+    return <BlogNews onClose={() => setShowBlog(false)} />;
+  }
+
+  if (showFAQ) {
+    return <FAQPage onClose={() => setShowFAQ(false)} />;
   }
 
   if (showLanding) {
@@ -128,6 +140,14 @@ function App() {
             onTriviaClick={() => {
               setShowLegalMenu(false);
               setShowTrivia(true);
+            }}
+            onBlogClick={() => {
+              setShowLegalMenu(false);
+              setShowBlog(true);
+            }}
+            onFAQClick={() => {
+              setShowLegalMenu(false);
+              setShowFAQ(true);
             }}
             onPrivacyClick={() => {
               setShowLegalMenu(false);

@@ -1,0 +1,252 @@
+.blog-news-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+}
+
+.blog-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.back-button {
+  background: #f3f4f6;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.back-button:hover {
+  background: #e5e7eb;
+  transform: translateX(-5px);
+}
+
+.blog-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.blog-header h1 {
+  font-size: 2.5rem;
+  color: #1f2937;
+  margin-bottom: 10px;
+}
+
+.blog-subtitle {
+  font-size: 1.1rem;
+  color: #6b7280;
+}
+
+.category-nav {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.category-btn {
+  padding: 8px 20px;
+  border: 2px solid #e5e7eb;
+  background: white;
+  border-radius: 25px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.category-btn:hover {
+  border-color: #9333ea;
+  background: #f9fafb;
+}
+
+.category-btn.active {
+  background: #9333ea;
+  color: white;
+  border-color: #9333ea;
+}
+
+.articles-grid {
+  display: grid;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.news-article {
+  background: #f9fafb;
+  border-radius: 15px;
+  padding: 25px;
+  transition: all 0.3s ease;
+  border: 1px solid #e5e7eb;
+}
+
+.news-article:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.article-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.article-emoji {
+  font-size: 2rem;
+}
+
+.article-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.article-category {
+  background: #9333ea;
+  color: white;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.article-date {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.article-title {
+  font-size: 1.3rem;
+  color: #1f2937;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.article-excerpt {
+  color: #4b5563;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.article-content {
+  color: #374151;
+  line-height: 1.8;
+  margin: 20px 0;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+  animation: slideDown 0.3s ease;
+}
+
+.article-content p {
+  margin-bottom: 15px;
+  text-align: justify;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.read-more-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.read-more-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(147, 51, 234, 0.3);
+}
+
+.read-more-btn .arrow {
+  font-size: 12px;
+  transition: transform 0.3s ease;
+}
+
+.article-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.tag {
+  background: #ede9fe;
+  color: #7c3aed;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.blog-footer {
+  text-align: center;
+  padding-top: 30px;
+  border-top: 2px solid #e5e7eb;
+}
+
+.update-notice {
+  font-size: 1rem;
+  color: #9333ea;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.engagement-text {
+  color: #6b7280;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .blog-container {
+    padding: 20px;
+  }
+
+  .blog-header h1 {
+    font-size: 2rem;
+  }
+
+  .category-nav {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+
+  .articles-grid {
+    gap: 20px;
+  }
+
+  .news-article {
+    padding: 20px;
+  }
+
+  .article-title {
+    font-size: 1.1rem;
+  }
+}

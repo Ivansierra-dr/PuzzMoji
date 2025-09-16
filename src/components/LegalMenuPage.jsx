@@ -3,6 +3,8 @@ import '../styles/LegalPages.css';
 const LegalMenuPage = ({
   onAboutClick,
   onTriviaClick,
+  onBlogClick,
+  onFAQClick,
   onPrivacyClick,
   onTermsClick,
   onContactClick,
@@ -51,6 +53,30 @@ const LegalMenuPage = ({
             <div className="menu-card-content">
               <h3>Curiosidades</h3>
               <p>Datos fascinantes del mundo del cine, series y entretenimiento</p>
+            </div>
+          </button>
+
+          <button
+            className="legal-menu-card"
+            onClick={() => handleMenuClick(onBlogClick)}
+            aria-label="Ver noticias"
+          >
+            <div className="menu-card-icon">📰</div>
+            <div className="menu-card-content">
+              <h3>Noticias</h3>
+              <p>Las últimas novedades del mundo del entretenimiento</p>
+            </div>
+          </button>
+
+          <button
+            className="legal-menu-card"
+            onClick={() => handleMenuClick(onFAQClick)}
+            aria-label="Ver preguntas frecuentes"
+          >
+            <div className="menu-card-icon">❓</div>
+            <div className="menu-card-content">
+              <h3>Preguntas Frecuentes</h3>
+              <p>Respuestas a las dudas más comunes sobre el juego</p>
             </div>
           </button>
 

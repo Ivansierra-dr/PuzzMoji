@@ -5,4 +5,11 @@ Disallow: /*.json$
 Disallow: /assets/
 Disallow: /_app/
 
+# Permitir específicamente a bots de AdSense
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
 Sitemap: https://playpuzzmoji.com/sitemap.xml
