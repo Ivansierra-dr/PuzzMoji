@@ -1,226 +1,64 @@
-import { useState, useEffect } from 'react';
-import EmojiPuzzle from './components/EmojiPuzzle';
-import Statistics from './components/Statistics';
-import LandingPage from './components/LandingPage';
-import AboutPage from './components/AboutPage';
-import TriviaBlog from './components/TriviaBlog';
-import BlogNews from './components/BlogNews';
-import FAQPage from './components/FAQPage';
-import PWAPrompt from './components/PWAPrompt';
-import AdBanner from './components/AdBanner';
-import LegalMenu from './components/LegalMenu';
-import LegalMenuPage from './components/LegalMenuPage';
-import PrivacyPolicy from './components/PrivacyPolicy';
-import TermsOfService from './components/TermsOfService';
-import ContactPage from './components/ContactPage';
-import LegalNotice from './components/LegalNotice';
-import { usePWA } from './hooks/usePWA';
-import puzzmojiLogo from './assets/puzzmoji-logo.svg';
+import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+
+// Pages
+import LandingPage from './pages/LandingPage';
+import GamePage from './pages/GamePage';
+import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
+
+// Converted pages
+import TriviaBlog from './pages/TriviaBlog';
+import BlogNews from './pages/BlogNews';
+import FAQPage from './pages/FAQPage';
+import LegalNotice from './pages/LegalNotice';
+import LegalMenuPage from './pages/LegalMenuPage';
+
 import './App.css';
 
 // Dev tools solo en desarrollo
 if (import.meta.env.DEV) {
-  // Cargar dev tools inmediatamente
   import('./utils/devTools.js').then(() => {
     console.log('✅ Dev tools loaded');
   });
 }
 
 function App() {
-  const [showStats, setShowStats] = useState(false);
-  const [showLanding, setShowLanding] = useState(false);
-  const [showAbout, setShowAbout] = useState(false);
-  const [showTrivia, setShowTrivia] = useState(false);
-  const [showBlog, setShowBlog] = useState(false);
-  const [showFAQ, setShowFAQ] = useState(false);
-  const [showPrivacy, setShowPrivacy] = useState(false);
-  const [showTerms, setShowTerms] = useState(false);
-  const [showContact, setShowContact] = useState(false);
-  const [showLegal, setShowLegal] = useState(false);
-  const [showLegalMenu, setShowLegalMenu] = useState(false);
-  const { isInstallable, updateAvailable, installApp, updateApp } = usePWA();
-
   useEffect(() => {
-    // Verificar si el usuario ha jugado antes
-    const hasPlayed = localStorage.getItem('puzzmoji_gameState') || 
+    // Check if user has played before for initial redirect
+    const hasPlayed = localStorage.getItem('puzzmoji_gameState') ||
                      localStorage.getItem('puzzmoji_stats');
-    
-    // Si no ha jugado antes, mostrar landing page
-    if (!hasPlayed) {
-      setShowLanding(true);
+
+    // If this is their first visit and they're on /game, redirect to landing
+    if (!hasPlayed && window.location.pathname === '/game') {
+      window.location.href = '/';
     }
   }, []);
 
-  const startGame = () => {
-    setShowLanding(false);
-    setShowLegalMenu(false); // Ensure legal menu is closed when starting game
-  };
-
-  const showLandingPage = () => {
-    setShowLanding(true);
-    setShowLegalMenu(false); // Reset legal menu state when going back to landing
-  };
-
-  const showHowToPlay = () => {
-    setShowLanding(true);
-    setShowLegalMenu(false);
-    // Después de mostrar la landing, hacer scroll a la sección de cómo jugar
-    setTimeout(() => {
-      const howToPlaySection = document.getElementById('how-to-play');
-      if (howToPlaySection) {
-        howToPlaySection.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, 100);
-  };
-
-  // Páginas principales - fuera del condicional para que funcionen desde cualquier lugar
-  if (showAbout) {
-    return <AboutPage onClose={() => setShowAbout(false)} />;
-  }
-
-  if (showTrivia) {
-    return <TriviaBlog onClose={() => setShowTrivia(false)} />;
-  }
-
-  if (showBlog) {
-    return <BlogNews onClose={() => setShowBlog(false)} />;
-  }
-
-  if (showFAQ) {
-    return <FAQPage onClose={() => setShowFAQ(false)} />;
-  }
-
-  if (showLanding) {
-    return <LandingPage onStartGame={startGame} />;
-  }
-
   return (
-    <div className="app content-with-bottom-ad">
-      <header className="app-header">
-        <div className="app-title">
-          <img 
-            src={puzzmojiLogo} 
-            alt="PuzzMoji Logo" 
-            className="app-logo"
-            onClick={showLandingPage}
-            style={{ cursor: 'pointer' }}
-            title="Volver al inicio"
-          />
-        </div>
-        <div className="header-buttons">
-          <button
-            className="info-button"
-            onClick={showHowToPlay}
-            aria-label="Información del juego"
-            title="¿Cómo jugar?"
-          >
-            ℹ️
-          </button>
-          <button
-            className="stats-button"
-            onClick={() => setShowStats(true)}
-            aria-label="Ver estadísticas"
-            title="Mis estadísticas"
-          >
-            📊
-          </button>
-          <LegalMenu
-            onMenuPageClick={() => setShowLegalMenu(true)}
-          />
-        </div>
-      </header>
-      
-      <main className="app-main">
-        {showLegalMenu ? (
-          <LegalMenuPage
-            onAboutClick={() => {
-              setShowLegalMenu(false);
-              setShowAbout(true);
-            }}
-            onTriviaClick={() => {
-              setShowLegalMenu(false);
-              setShowTrivia(true);
-            }}
-            onBlogClick={() => {
-              setShowLegalMenu(false);
-              setShowBlog(true);
-            }}
-            onFAQClick={() => {
-              setShowLegalMenu(false);
-              setShowFAQ(true);
-            }}
-            onPrivacyClick={() => {
-              setShowLegalMenu(false);
-              setShowPrivacy(true);
-            }}
-            onTermsClick={() => {
-              setShowLegalMenu(false);
-              setShowTerms(true);
-            }}
-            onContactClick={() => {
-              setShowLegalMenu(false);
-              setShowContact(true);
-            }}
-            onLegalClick={() => {
-              setShowLegalMenu(false);
-              setShowLegal(true);
-            }}
-            onClose={() => setShowLegalMenu(false)}
-          />
-        ) : (
-          <EmojiPuzzle />
-        )}
-      </main>
-      
-      {/* Banner inferior fijo */}
-      <AdBanner 
-        slot="8303646094"
-        format="auto"
-        className="ad-banner--bottom"
-      />
-      
-      <Statistics 
-        isOpen={showStats} 
-        onClose={() => setShowStats(false)} 
-      />
-      
-      <PWAPrompt
-        isInstallable={isInstallable}
-        updateAvailable={updateAvailable}
-        onInstall={installApp}
-        onUpdate={updateApp}
-      />
-      
-      {/* Modales legales */}
-      {showPrivacy && (
-        <PrivacyPolicy onClose={() => {
-          setShowPrivacy(false);
-          setShowLegalMenu(true); // Return to legal menu
-        }} />
-      )}
+    <Router>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/game" element={<GamePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
 
-      {showTerms && (
-        <TermsOfService onClose={() => {
-          setShowTerms(false);
-          setShowLegalMenu(true); // Return to legal menu
-        }} />
-      )}
+        {/* Converted page routes */}
+        <Route path="/trivia" element={<TriviaBlog />} />
+        <Route path="/blog" element={<BlogNews />} />
+        <Route path="/faq" element={<FAQPage />} />
+        <Route path="/legal-notice" element={<LegalNotice />} />
+        <Route path="/legal" element={<LegalMenuPage />} />
 
-      {showContact && (
-        <ContactPage onClose={() => {
-          setShowContact(false);
-          setShowLegalMenu(true); // Return to legal menu
-        }} />
-      )}
-
-      {showLegal && (
-        <LegalNotice onClose={() => {
-          setShowLegal(false);
-          setShowLegalMenu(true); // Return to legal menu
-        }} />
-      )}
-    </div>
+        {/* Redirect any unknown route to home */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </Router>
   );
 }
 
-export default App
+export default App;

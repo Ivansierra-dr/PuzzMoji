@@ -41,7 +41,6 @@ const EmojiPuzzle = () => {
   const [attempts, setAttempts] = useState([]);
   const [gameStatus, setGameStatus] = useState('playing');
   const [showHint, setShowHint] = useState(false);
-  const [attemptsLeft, setAttemptsLeft] = useState(4);
   const [isLoadingDate, setIsLoadingDate] = useState(true);
   const [dateError, setDateError] = useState(false);
   const [visibleEmojis, setVisibleEmojis] = useState(1);
@@ -92,7 +91,6 @@ const EmojiPuzzle = () => {
         if (state.date === dateToCheck) {
           setAttempts(state.attempts || []);
           setGameStatus(state.status || 'playing');
-          setAttemptsLeft(4 - (state.attempts?.length || 0));
           
           // Si el juego terminó (ganado o perdido), mostrar todos los emojis
           if (state.status === 'won' || state.status === 'lost') {
@@ -176,7 +174,6 @@ const EmojiPuzzle = () => {
       }
     }
     
-    setAttemptsLeft(4 - newAttempts.length);
     setUserInput('');
   };
 
@@ -232,14 +229,14 @@ const EmojiPuzzle = () => {
       const normalizedAttempt = attempts[index].trim().toLowerCase();
       return currentPuzzle.answer.includes(normalizedAttempt) ? '🟩' : '🟥';
     }).join('');
-    
-    const resultIcon = attemptsLeft === 0 ? '❌' : `✅ ${attempts.length}/4`;
-    const encouragement = attemptsLeft === 0 
-      ? '¡Era complicado! 🤔 ¿Te animas con el de mañana?' 
+
+    const resultIcon = attempts.length === 4 && gameStatus === 'lost' ? '❌' : `✅ ${attempts.length}/4`;
+    const encouragement = attempts.length === 4 && gameStatus === 'lost'
+      ? '¡Era complicado! 🤔 ¿Te animas con el de mañana?'
       : `¡Lo conseguí en ${attempts.length} intento${attempts.length > 1 ? 's' : ''}! 🎉`;
-    
+
     const text = `${encouragement}\n\nPuzzMoji ${currentPuzzle.date}\n${squares} ${resultIcon}\n\n¿Puedes adivinar qué película o serie es? 🎭\nJuega GRATIS en: playpuzzmoji.com`;
-    
+
     if (navigator.share) {
       navigator.share({ text });
     } else {
@@ -327,7 +324,7 @@ const EmojiPuzzle = () => {
             </form>
             
             <div className="game-info">
-              <span className="attempts-left">Intentos: {attemptsLeft}/4</span>
+              <span className="attempts-left">Intento: {attempts.length + 1}/4</span>
               {!showHint && (
                 <button onClick={getHint} className="hint-btn">
                   <TwemojiText text="💡" size={16} /> Pista

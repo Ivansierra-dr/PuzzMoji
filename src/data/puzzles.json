@@ -114,7 +114,7 @@
   {
     "id": 15,
     "date": "2025-09-21",
-    "emojis": ["⏱️", "🍊", "👁️"],
+    "emojis": ["⏱️", "👁️", "🍊"],
     "answer": ["la naranja mecanica", "naranja mecanica", "clockwork orange"],
     "category": "película",
     "hint": "Ultraviolencia de Kubrick"
@@ -122,7 +122,7 @@
   {
     "id": 16,
     "date": "2025-09-22",
-    "emojis": ["🦁", "👑", "🌍"],
+    "emojis": ["👑", "🦁", "🌍"],
     "answer": ["el rey leon", "rey leon", "lion king"],
     "category": "película",
     "hint": "Hakuna Matata"

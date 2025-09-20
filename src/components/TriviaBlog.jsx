@@ -157,8 +157,8 @@ const TriviaBlog = ({ onClose }) => {
             <h3>💡 ¿Conoces una curiosidad increíble?</h3>
             <p>
               Compártela con nosotros en{' '}
-              <a href="mailto:puzzmoji.game@gmail.com?subject=Curiosidad para PuzzMoji">
-                puzzmoji.game@gmail.com
+              <a href="mailto:playpuzzmoji@gmail.com?subject=Curiosidad para PuzzMoji">
+                playpuzzmoji@gmail.com
               </a>
             </p>
           </div>

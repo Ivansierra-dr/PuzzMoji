@@ -132,7 +132,7 @@ const AboutPage = ({ onClose }) => {
             ¿Tienes sugerencias, encontraste un error o simplemente quieres saludar?
           </p>
           <p>
-            Escríbenos a: <a href="mailto:puzzmoji.game@gmail.com">puzzmoji.game@gmail.com</a>
+            Escríbenos a: <a href="mailto:playpuzzmoji@gmail.com">playpuzzmoji@gmail.com</a>
           </p>
         </div>
       </div>

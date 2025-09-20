@@ -1,13 +1,13 @@
 import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/LegalMenu.css';
 
-const LegalMenu = ({
-  onMenuPageClick
-}) => {
+const LegalMenu = () => {
   const buttonRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleClick = () => {
-    onMenuPageClick();
+    navigate('/legal');
     // Remove focus from button after clicking
     if (buttonRef.current) {
       setTimeout(() => {
