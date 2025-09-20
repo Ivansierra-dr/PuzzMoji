@@ -14,7 +14,8 @@
     "serve": "npx serve dist",
     "lint": "eslint .",
     "deploy:netlify": "npm run build && npx netlify deploy --prod --dir dist",
-    "deploy:vercel": "npm run build && npx vercel --prod"
+    "deploy:vercel": "npm run build && npx vercel --prod",
+    "install:vercel": "npm install --legacy-peer-deps"
   },
   "dependencies": {
     "react": "^19.1.1",
