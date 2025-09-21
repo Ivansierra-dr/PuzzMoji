@@ -100,9 +100,10 @@ const EmojiPuzzle = () => {
             if (state.visibleEmojis !== undefined) {
               setVisibleEmojis(state.visibleEmojis);
             } else {
+              const normalizedPuzzleAnswers = puzzle.answer.map(answer => normalizeText(answer));
               const failedAttempts = (state.attempts || []).filter(attempt => {
-                const normalizedAttempt = attempt.trim().toLowerCase();
-                return !puzzle.answer.includes(normalizedAttempt);
+                const normalizedAttempt = normalizeText(attempt);
+                return !normalizedPuzzleAnswers.includes(normalizedAttempt);
               }).length;
               setVisibleEmojis(Math.min(1 + failedAttempts, puzzle.emojis.length));
             }
@@ -125,6 +126,14 @@ const EmojiPuzzle = () => {
     initializeGame();
   }, [initializeGame]);
 
+  const normalizeText = (text) => {
+    return text
+      .trim()
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, ''); // Elimina tildes y diacríticos
+  };
+
   const saveGameState = async (newAttempts, status, newVisibleEmojis) => {
     const today = await dateService.getRealDate();
     const state = {
@@ -140,11 +149,14 @@ const EmojiPuzzle = () => {
     e.preventDefault();
     if (!userInput.trim() || gameStatus !== 'playing') return;
 
-    const normalizedInput = userInput.trim().toLowerCase();
+    const normalizedInput = normalizeText(userInput);
     const newAttempts = [...attempts, userInput];
     setAttempts(newAttempts);
-    
-    if (currentPuzzle.answer.includes(normalizedInput)) {
+
+    // Normalizar también las respuestas del puzzle para comparar
+    const normalizedAnswers = currentPuzzle.answer.map(answer => normalizeText(answer));
+
+    if (normalizedAnswers.includes(normalizedInput)) {
       // Revelar todos los emojis al ganar
       const allEmojis = currentPuzzle.emojis.length;
       setVisibleEmojis(allEmojis);
@@ -154,8 +166,8 @@ const EmojiPuzzle = () => {
     } else {
       // Revelar siguiente emoji si es un fallo y aún hay emojis ocultos
       const failedAttempts = newAttempts.filter(attempt => {
-        const normalizedAttempt = attempt.trim().toLowerCase();
-        return !currentPuzzle.answer.includes(normalizedAttempt);
+        const normalizedAttempt = normalizeText(attempt);
+        return !normalizedAnswers.includes(normalizedAttempt);
       }).length;
       
       // Revelar un emoji más por cada fallo, hasta un máximo de 3
@@ -336,8 +348,9 @@ const EmojiPuzzle = () => {
         
         <div className="attempts-list">
           {attempts.map((attempt, index) => {
-            const normalizedAttempt = attempt.trim().toLowerCase();
-            const isCorrect = currentPuzzle.answer.includes(normalizedAttempt);
+            const normalizedAttempt = normalizeText(attempt);
+            const normalizedPuzzleAnswers = currentPuzzle.answer.map(answer => normalizeText(answer));
+            const isCorrect = normalizedPuzzleAnswers.includes(normalizedAttempt);
             return (
               <div key={index} className={`attempt ${isCorrect ? 'correct' : 'incorrect'}`}>
                 {attempt} <TwemojiText text={isCorrect ? '✅' : '❌'} size={20} />
