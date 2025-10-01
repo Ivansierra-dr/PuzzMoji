@@ -32,10 +32,10 @@ routes.forEach(route => {
     fs.mkdirSync(dir, { recursive: true });
   }
 
-  // Write the HTML file
+  // Write the HTML file (canonical is handled by React Helmet in each page component)
   fs.writeFileSync(path.join(dir, 'index.html'), template);
 
-  console.log(`Pre-rendered: ${route}`);
+  console.log(`✓ Pre-rendered: ${route}`);
 });
 
 console.log('Pre-rendering complete!');
