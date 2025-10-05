@@ -237,9 +237,10 @@ const EmojiPuzzle = () => {
   };
 
   const shareResult = () => {
-    const squares = attempts.map((_, index) => {
-      const normalizedAttempt = attempts[index].trim().toLowerCase();
-      return currentPuzzle.answer.includes(normalizedAttempt) ? '🟩' : '🟥';
+    const normalizedPuzzleAnswers = currentPuzzle.answer.map(answer => normalizeText(answer));
+    const squares = attempts.map((attempt) => {
+      const normalizedAttempt = normalizeText(attempt);
+      return normalizedPuzzleAnswers.includes(normalizedAttempt) ? '🟩' : '🟥';
     }).join('');
 
     const resultIcon = attempts.length === 4 && gameStatus === 'lost' ? '❌' : `✅ ${attempts.length}/4`;
