@@ -27,6 +27,12 @@ if (import.meta.env.DEV) {
 
 function App() {
   useEffect(() => {
+    // Skip redirect during pre-rendering (Puppeteer/Headless Chrome)
+    const isPrerendering = navigator.userAgent.includes('HeadlessChrome') ||
+                          navigator.userAgent.includes('Puppeteer');
+
+    if (isPrerendering) return;
+
     // Check if user has played before for initial redirect
     const hasPlayed = localStorage.getItem('puzzmoji_gameState') ||
                      localStorage.getItem('puzzmoji_stats');
