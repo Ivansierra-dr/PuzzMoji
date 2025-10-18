@@ -13,17 +13,35 @@ const SEO = ({
   return (
     <Helmet>
       {/* Basic Meta Tags */}
+      <html lang="es" />
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
+      <meta name="author" content="PuzzMoji Team" />
       <link rel="canonical" href={url} />
 
+      {/* SEO Directives */}
+      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+      <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+      <meta name="language" content="Spanish" />
+      <meta name="geo.region" content="ES" />
+      <meta name="geo.country" content="Spain" />
+      <meta name="revisit-after" content="1 day" />
+      <meta name="rating" content="General" />
+
+      {/* Alternate & Sitemap */}
+      <link rel="alternate" href="https://playpuzzmoji.com/" hreflang="es" />
+      <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
       {/* Open Graph */}
+      <meta property="og:type" content={type} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
+      <meta property="og:image:alt" content="PuzzMoji - Juego diario de emojis" />
+      <meta property="og:image:width" content="512" />
+      <meta property="og:image:height" content="512" />
       <meta property="og:url" content={url} />
-      <meta property="og:type" content={type} />
       <meta property="og:site_name" content="PuzzMoji" />
       <meta property="og:locale" content="es_ES" />
 
@@ -32,14 +50,9 @@ const SEO = ({
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
+      <meta name="twitter:image:alt" content="PuzzMoji - Juego diario de emojis" />
       <meta name="twitter:site" content="@puzzmoji" />
-
-      {/* Additional SEO */}
-      <meta name="robots" content="index, follow" />
-      <meta name="googlebot" content="index, follow" />
-      <meta name="author" content="PuzzMoji Team" />
-      <meta name="language" content="Spanish" />
-      <meta name="revisit-after" content="1 day" />
+      <meta name="twitter:creator" content="@puzzmoji" />
 
       {/* Structured Data */}
       <script type="application/ld+json">
@@ -47,11 +60,12 @@ const SEO = ({
           "@context": "https://schema.org",
           "@type": "WebApplication",
           "name": "PuzzMoji",
-          "url": "https://playpuzzmoji.com",
+          "url": url,
           "description": description,
           "applicationCategory": "Game",
           "genre": "Puzzle",
           "browserRequirements": "Requires JavaScript. Requires HTML5.",
+          "inLanguage": "es-ES",
           "offers": {
             "@type": "Offer",
             "price": "0",
@@ -60,6 +74,16 @@ const SEO = ({
           "author": {
             "@type": "Organization",
             "name": "PuzzMoji Team"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "PuzzMoji",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://playpuzzmoji.com/puzzmoji-logo.svg",
+              "width": 512,
+              "height": 512
+            }
           }
         })}
       </script>

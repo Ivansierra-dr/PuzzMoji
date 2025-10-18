@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "vite",
     "dev:host": "vite --host",
-    "build": "vite build && npm run postbuild",
-    "postbuild": "node scripts/prerender.js",
+    "build": "vite build && node scripts/prerender.js",
     "build:analyze": "vite build --mode analyze",
     "preview": "vite preview",
     "preview:prod": "npm run build && vite preview",
@@ -33,7 +32,9 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.3.0",
+    "puppeteer": "^24.25.0",
     "react-helmet-async": "^2.0.5",
+    "serve-handler": "^6.1.6",
     "vite": "^7.1.2",
     "vite-plugin-pages": "^0.33.1",
     "vite-ssg": "^28.1.0"

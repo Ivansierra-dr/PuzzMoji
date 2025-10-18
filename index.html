@@ -10,43 +10,10 @@
     <!-- Shortcut icon para compatibilidad con navegadores antiguos -->
     <link rel="shortcut icon" href="/puzzmoji-logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- SEO Básico -->
-    <meta name="description" content="PuzzMoji - El juego diario de emojis. Adivina la película o serie representada por emojis. ¡Un nuevo puzzle cada día!" />
-    <meta name="keywords" content="puzzmoji, emoji, puzzle, juego, wordle, películas, series, entretenimiento, viral, tiktok" />
-    <meta name="author" content="PuzzMoji" />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-    <meta name="language" content="Spanish" />
-    <meta name="geo.region" content="ES" />
-    <meta name="geo.country" content="Spain" />
-    <meta name="revisit-after" content="1 day" />
-    <meta name="rating" content="General" />
-    <!-- Canonical se establece dinámicamente por cada página con React Helmet -->
-    <link rel="alternate" href="https://playpuzzmoji.com/" hreflang="es" />
-    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://playpuzzmoji.com/" />
-    <meta property="og:title" content="PuzzMoji - Juego diario de emojis 🎭🎬📺" />
-    <meta property="og:description" content="¿Puedes adivinar la película o serie por sus emojis? Juega PuzzMoji, el nuevo juego viral que desafía tu conocimiento de entretenimiento. ¡Un nuevo puzzle cada día!" />
-    <meta property="og:image" content="https://playpuzzmoji.com/og-image.png" />
-    <meta property="og:image:alt" content="PuzzMoji - Juego diario de emojis" />
-    <meta property="og:image:width" content="512" />
-    <meta property="og:image:height" content="512" />
-    <meta property="og:site_name" content="PuzzMoji" />
-    <meta property="og:locale" content="es_ES" />
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://playpuzzmoji.com/" />
-    <meta name="twitter:title" content="PuzzMoji - Juego diario de emojis 🎭🎬📺" />
-    <meta name="twitter:description" content="¿Puedes adivinar la película o serie por sus emojis? Juega PuzzMoji, el nuevo juego viral que desafía tu conocimiento de entretenimiento. ¡Un nuevo puzzle cada día!" />
-    <meta name="twitter:image" content="https://playpuzzmoji.com/og-image.png" />
-    <meta name="twitter:image:alt" content="PuzzMoji - Juego diario de emojis" />
-    <meta name="twitter:creator" content="@puzzmoji" />
-    
+
+    <!-- SEO meta tags are managed by React Helmet in each page component -->
+    <!-- This ensures unique meta tags for each route after pre-rendering -->
+
     <!-- PWA -->
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#9b5de5" />
@@ -54,87 +21,22 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="PuzzMoji" />
-    
+
     <!-- Apple Touch Icons -->
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    
+
     <!-- PWA Icons -->
     <link rel="icon" type="image/png" sizes="192x192" href="/pwa-192x192.png" />
     <link rel="icon" type="image/png" sizes="512x512" href="/pwa-512x512.png" />
-    
+
     <!-- Windows Tiles -->
     <meta name="msapplication-TileColor" content="#9b5de5" />
     <meta name="msapplication-TileImage" content="/pwa-192x192.png" />
-    
+
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4469023098085956"
             crossorigin="anonymous"></script>
-    
-    <title>PuzzMoji - Juego diario de emojis 🎭🎬📺</title>
-    
-    <!-- Structured Data for Google -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": ["WebSite", "Game", "WebApplication"],
-      "name": "PuzzMoji",
-      "alternateName": "PuzzMoji - Juego diario de emojis",
-      "url": "https://playpuzzmoji.com",
-      "logo": "https://playpuzzmoji.com/puzzmoji-logo.svg",
-      "image": "https://playpuzzmoji.com/pwa-512x512.png",
-      "description": "Juego diario de puzzles con emojis. Adivina películas y series representadas por emojis. Un nuevo desafío cada día.",
-      "inLanguage": "es-ES",
-      "genre": "Puzzle Game",
-      "gameLocation": "Online",
-      "applicationCategory": "Game",
-      "operatingSystem": "Web Browser",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "EUR"
-      },
-      "creator": {
-        "@type": "Organization",
-        "name": "PuzzMoji Team"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "PuzzMoji",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://playpuzzmoji.com/puzzmoji-logo.svg",
-          "width": 512,
-          "height": 512
-        }
-      },
-      "potentialAction": {
-        "@type": "PlayAction",
-        "target": "https://playpuzzmoji.com"
-      },
-      "mainEntity": {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "¿Cómo se juega a PuzzMoji?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Adivina la película o serie representada por emojis. Tienes 4 intentos y los emojis se revelan progresivamente con cada fallo."
-            }
-          },
-          {
-            "@type": "Question", 
-            "name": "¿Con qué frecuencia hay nuevos puzzles?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Hay un nuevo puzzle cada día. Vuelve diariamente para un nuevo desafío."
-            }
-          }
-        ]
-      }
-    }
-    </script>
   </head>
   <body>
     <div id="root"></div>
