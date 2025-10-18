@@ -514,10 +514,10 @@
   {
     "id": 65,
     "date": "2025-11-10",
-    "emojis": ["🧟‍♂️", "🏙️", "🔍"],
-    "answer": ["the walking dead"],
+    "emojis": ["🏠", "💰", "🎭"],
+    "answer": ["la casa de papel", "money heist"],
     "category": "serie",
-    "hint": "Supervivientes en un mundo lleno de muertos vivientes"
+    "hint": "Atraco perfecto con nombres de ciudades"
   },
   {
     "id": 66,
@@ -562,10 +562,10 @@
   {
     "id": 71,
     "date": "2025-11-16",
-    "emojis": ["👸", "🐉", "🗡️"],
-    "answer": ["game of thrones", "juego de tronos"],
+    "emojis": ["🕵️", "🎩", "🔍"],
+    "answer": ["peaky blinders"],
     "category": "serie",
-    "hint": "Luchas de poder en un reino ficticio"
+    "hint": "Gángsters de Birmingham con gorras afiladas"
   },
   {
     "id": 72,
@@ -602,26 +602,26 @@
   {
     "id": 76,
     "date": "2025-11-21",
-    "emojis": ["👻", "🏚️", "🎩"],
-    "answer": ["los cazafantasmas", "ghostbusters"],
+    "emojis": ["🤖", "💙", "🧒"],
+    "answer": ["wall-e", "wall e"],
     "category": "película",
-    "hint": "Equipos paranormales en Nueva York"
+    "hint": "Robot solitario que limpia la Tierra"
   },
   {
     "id": 77,
     "date": "2025-11-22",
-    "emojis": ["🛡️", "⚔️", "🦸‍♀️"],
-    "answer": ["wonder woman", "mujer maravilla"],
+    "emojis": ["🧛‍♂️", "🏰", "🩸"],
+    "answer": ["dracula"],
     "category": "película",
-    "hint": "Amazona guerrera que defiende la justicia"
+    "hint": "El vampiro más famoso de Transilvania"
   },
   {
     "id": 78,
     "date": "2025-11-23",
-    "emojis": ["🧒", "🦁", "🌍"],
-    "answer": ["el rey leon", "lion king"],
+    "emojis": ["🚂", "🎩", "🔫"],
+    "answer": ["el llanero solitario", "the lone ranger"],
     "category": "película",
-    "hint": "Ciclo de la vida en la sabana"
+    "hint": "Justicia en el Salvaje Oeste"
   },
   {
     "id": 79,
@@ -674,18 +674,18 @@
   {
     "id": 85,
     "date": "2025-11-30",
-    "emojis": ["🧛‍♂️", "🧛‍♀️", "🏫"],
-    "answer": ["crepúsculo", "twilight"],
+    "emojis": ["👹", "👸", "🐴"],
+    "answer": ["shrek"],
     "category": "película",
-    "hint": "Amor prohibido entre vampiros y humanos"
+    "hint": "Ogro verde en busca de su final feliz"
   },
   {
     "id": 86,
     "date": "2025-12-01",
-    "emojis": ["👨‍🎓", "🧪", "💣"],
-    "answer": ["breaking bad", "química mortal"],
-    "category": "serie",
-    "hint": "Profesor de química que cambia radicalmente"
+    "emojis": ["🏃‍♂️", "🍫", "🪖"],
+    "answer": ["forrest gump"],
+    "category": "película",
+    "hint": "La vida es como una caja de bombones"
   },
   {
     "id": 87,
