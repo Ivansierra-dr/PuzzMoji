@@ -419,8 +419,384 @@
     "id": 53,
     "date": "2025-10-29",
     "emojis": ["🧠", "🍷", "🎭"],
-    "answer": ["hannibal", "el silencio de los inocentes"],
+    "answer": ["hannibal", "el silencio de los corderos"],
     "category": "película",
     "hint": "Hola Clarice"
+  },
+  {
+    "id": 54,
+    "date": "2025-10-30",
+    "emojis": ["🧩", "💼", "🕵️‍♀️"],
+    "answer": ["sherlock holmes"],
+    "category": "película",
+    "hint": "Detective famoso por su lógica y deducción"
+  },
+  {
+    "id": 55,
+    "date": "2025-10-31",
+    "emojis": ["🎃", "🛏️", "🔪"],
+    "answer": ["pesadilla en elm street", "a nightmare on elm street"],
+    "category": "película",
+    "hint": "Cuidado con lo que sueñas"
+  },
+  {
+    "id": 56,
+    "date": "2025-11-01",
+    "emojis": ["👦", "👻", "🏠"],
+    "answer": ["el sexto sentido", "the sixth sense"],
+    "category": "película",
+    "hint": "Algunos pueden ver lo que otros no"
+  },
+  {
+    "id": 57,
+    "date": "2025-11-02",
+    "emojis": ["🚀", "🌌", "⏳"],
+    "answer": ["interestelar", "interstellar"],
+    "category": "película",
+    "hint": "Viajes que cruzan tiempo y espacio"
+  },
+  {
+    "id": 58,
+    "date": "2025-11-03",
+    "emojis": ["🧙‍♂️", "🐉", "📖"],
+    "answer": ["animales fantasticos", "fantastic beasts"],
+    "category": "película",
+    "hint": "Criaturas mágicas fuera de Hogwarts"
+  },
+  {
+    "id": 59,
+    "date": "2025-11-04",
+    "emojis": ["💼", "👔", "⚖️"],
+    "answer": ["suits"],
+    "category": "serie",
+    "hint": "Abogados con estilo y secretos"
+  },
+  {
+    "id": 60,
+    "date": "2025-11-05",
+    "emojis": ["🎭", "🎩", "🗡️"],
+    "answer": ["v de vendetta", "v for vendetta"],
+    "category": "película",
+    "hint": "Una máscara y un plan para cambiarlo todo"
+  },
+    {
+    "id": 61,
+    "date": "2025-11-06",
+    "emojis": ["🧑‍🚀", "🌍", "🚀"],
+    "answer": ["gravity", "gravedad"],
+    "category": "película",
+    "hint": "Supervivencia en órbita"
+  },
+  {
+    "id": 62,
+    "date": "2025-11-07",
+    "emojis": ["🏃‍♂️", "🧟‍♂️", "🌆"],
+    "answer": ["the walking dead"],
+    "category": "serie",
+    "hint": "Sobrevivir cuando los muertos caminan"
+  },
+  {
+    "id": 63,
+    "date": "2025-11-08",
+    "emojis": ["🎮", "👾", "🌐"],
+    "answer": ["ready player one"],
+    "category": "película",
+    "hint": "La realidad y los videojuegos se mezclan"
+  },
+  {
+    "id": 64,
+    "date": "2025-11-09",
+    "emojis": ["🧑‍🚀", "👽", "🌕"],
+    "answer": ["the martian", "marciano"],
+    "category": "película",
+    "hint": "Un hombre atrapado en otro planeta"
+  },
+  {
+    "id": 65,
+    "date": "2025-11-10",
+    "emojis": ["🏠", "💰", "🎭"],
+    "answer": ["la casa de papel", "money heist"],
+    "category": "serie",
+    "hint": "Atraco perfecto con nombres de ciudades"
+  },
+  {
+    "id": 66,
+    "date": "2025-11-11",
+    "emojis": ["🧙‍♂️", "💎", "🧹"],
+    "answer": ["harry potter y la piedra filosofal", "harry potter 1"],
+    "category": "película",
+    "hint": "Comienza la aventura en Hogwarts"
+  },
+  {
+    "id": 67,
+    "date": "2025-11-12",
+    "emojis": ["🛸", "🌍", "⚡"],
+    "answer": ["independence day", "día de la independencia"],
+    "category": "película",
+    "hint": "La humanidad contra visitantes de otro planeta"
+  },
+  {
+    "id": 68,
+    "date": "2025-11-13",
+    "emojis": ["🧟‍♂️", "🧑‍🔬", "🏥"],
+    "answer": ["resident evil"],
+    "category": "película",
+    "hint": "Virus que cambia todo en monstruos"
+  },
+  {
+    "id": 69,
+    "date": "2025-11-14",
+    "emojis": ["🦸‍♂️", "🧬", "🕷️"],
+    "answer": ["spider man: no way home", "spiderman 3"],
+    "category": "película",
+    "hint": "El multiverso y la araña"
+  },
+  {
+    "id": 70,
+    "date": "2025-11-15",
+    "emojis": ["👨‍💼", "📉", "💰"],
+    "answer": ["billions"],
+    "category": "serie",
+    "hint": "Dinero, poder y estrategia en Wall Street"
+  },
+  {
+    "id": 71,
+    "date": "2025-11-16",
+    "emojis": ["🕵️", "🎩", "🔍"],
+    "answer": ["peaky blinders"],
+    "category": "serie",
+    "hint": "Gángsters de Birmingham con gorras afiladas"
+  },
+  {
+    "id": 72,
+    "date": "2025-11-17",
+    "emojis": ["🎩", "🐰", "🎪"],
+    "answer": ["el truco final", "the prestige"],
+    "category": "película",
+    "hint": "Competencia entre magos obsesionados"
+  },
+  {
+    "id": 73,
+    "date": "2025-11-18",
+    "emojis": ["❄️", "💔", "🚢"],
+    "answer": ["titanic"],
+    "category": "película",
+    "hint": "Historia de amor en un barco condenado"
+  },
+  {
+    "id": 74,
+    "date": "2025-11-19",
+    "emojis": ["🚗", "💨", "🏁"],
+    "answer": ["fast and furious", "rápidos y furiosos"],
+    "category": "película",
+    "hint": "Carreras ilegales y adrenalina"
+  },
+  {
+    "id": 75,
+    "date": "2025-11-20",
+    "emojis": ["🚲", "👧🧒🧑", "👾"],
+    "answer": ["stranger things"],
+    "category": "serie",
+    "hint": "Niños, criaturas extrañas y misterios sobrenaturales"
+  },
+  {
+    "id": 76,
+    "date": "2025-11-21",
+    "emojis": ["🤖", "💙", "🧒"],
+    "answer": ["wall-e", "wall e"],
+    "category": "película",
+    "hint": "Robot solitario que limpia la Tierra"
+  },
+  {
+    "id": 77,
+    "date": "2025-11-22",
+    "emojis": ["🧛‍♂️", "🏰", "🩸"],
+    "answer": ["dracula"],
+    "category": "película",
+    "hint": "El vampiro más famoso de Transilvania"
+  },
+  {
+    "id": 78,
+    "date": "2025-11-23",
+    "emojis": ["🚂", "🎩", "🔫"],
+    "answer": ["el llanero solitario", "the lone ranger"],
+    "category": "película",
+    "hint": "Justicia en el Salvaje Oeste"
+  },
+  {
+    "id": 79,
+    "date": "2025-11-24",
+    "emojis": ["🧙‍♂️", "🪄", "🕷️"],
+    "answer": ["doctor strange", "doctor extraño"],
+    "category": "película",
+    "hint": "Magia y dimensiones alternativas dentro del universo Marvel"
+  },
+    {
+    "id": 80,
+    "date": "2025-11-25",
+    "emojis": ["📕", "🩸", "👤"],
+    "answer": ["reina roja", "red queen"],
+    "category": "serie",
+    "hint": "Una protagonista en un mundo donde los colores determinan el poder"
+  },
+  {
+    "id": 81,
+    "date": "2025-11-26",
+    "emojis": ["👩‍🎤", "🎤", "🪩"],
+    "answer": ["bohemian rhapsody", "bohemian rhapsody: la historia de freddie mercury"],
+    "category": "película",
+    "hint": "Rock y biografía de una leyenda"
+  },
+  {
+    "id": 82,
+    "date": "2025-11-27",
+    "emojis": ["🧟‍♀️", "🧪", "🏢"],
+    "answer": ["i am legend", "soy leyenda"],
+    "category": "película",
+    "hint": "Último hombre vivo en una ciudad infestada"
+  },
+  {
+    "id": 83,
+    "date": "2025-11-28",
+    "emojis": ["💻", "👨‍💼", "🌐"],
+    "answer": ["the social network", "la red social"],
+    "category": "película",
+    "hint": "Historia sobre la creación de Facebook y la ambición tecnológica"
+  },
+  {
+    "id": 84,
+    "date": "2025-11-29",
+    "emojis": ["🦁", "🐯", "🐘"],
+    "answer": ["madagascar"],
+    "category": "película",
+    "hint": "Animales del zoo en una isla exótica"
+  },
+  {
+    "id": 85,
+    "date": "2025-11-30",
+    "emojis": ["👹", "👸", "🐴"],
+    "answer": ["shrek"],
+    "category": "película",
+    "hint": "Ogro verde en busca de su final feliz"
+  },
+  {
+    "id": 86,
+    "date": "2025-12-01",
+    "emojis": ["🏃‍♂️", "🍫", "🪖"],
+    "answer": ["forrest gump"],
+    "category": "película",
+    "hint": "La vida es como una caja de bombones"
+  },
+  {
+    "id": 87,
+    "date": "2025-12-02",
+    "emojis": ["🦊", "🐰", "🏞️"],
+    "answer": ["zootropolis", "zootopía"],
+    "category": "película",
+    "hint": "Ciudad de animales donde todo es posible"
+  },
+  {
+    "id": 88,
+    "date": "2025-12-03",
+    "emojis": ["👽", "🛸", "🌎"],
+    "answer": ["arrival", "la llegada"],
+    "category": "película",
+    "hint": "Primer contacto alienígena"
+  },
+  {
+    "id": 89,
+    "date": "2025-12-04",
+    "emojis": ["🕵️‍♂️", "💡", "🏰"],
+    "answer": ["enola holmes", "enola holmes: detective adolescente"],
+    "category": "película",
+    "hint": "Hermana menor de un famoso detective"
+  },
+  {
+    "id": 90,
+    "date": "2025-12-05",
+    "emojis": ["🧙‍♀️", "🪞", "🕯️"],
+    "answer": ["the wheel of time", "la rueda del tiempo"],
+    "category": "serie",
+    "hint": "Un mundo dividido por la magia y el destino"
+  },
+  {
+    "id": 91,
+    "date": "2025-12-06",
+    "emojis": ["🧞‍♂️", "🕌", "🕰️"],
+    "answer": ["aladin", "aladdin","aladino"],
+    "category": "película",
+    "hint": "Un joven encuentra un genio y una lámpara mágica"
+  },
+  {
+    "id": 92,
+    "date": "2025-12-07",
+    "emojis": ["🎷", "💭", "🌟"],
+    "answer": ["soul"],
+    "category": "película",
+    "hint": "Un músico explora el significado de la vida y la pasión por el jazz"
+  },
+  {
+    "id": 93,
+    "date": "2025-12-08",
+    "emojis": ["🎓", "⚖️", "🕵️‍♀️"],
+    "answer": ["how to get away with murder", "como defender a un asesino"],
+    "category": "serie",
+    "hint": "Profesora de derecho y sus estudiantes envueltos en crímenes y conspiraciones"
+  },
+  {
+    "id": 94,
+    "date": "2025-12-09",
+    "emojis": ["🦸‍♂️", "🕶️", "🌆"],
+    "answer": ["the boys", "los chicos"],
+    "category": "serie",
+    "hint": "Superhéroes que no siempre son heroicos"
+  },
+  {
+    "id": 95,
+    "date": "2025-12-10",
+    "emojis": ["👑", "🐸", "💋"],
+    "answer": ["la princesa y el sapo", "the princess and the frog"],
+    "category": "película",
+    "hint": "Un beso mágico cambia a un príncipe"
+  },
+  {
+    "id": 96,
+    "date": "2025-12-11",
+    "emojis": ["🐍", "👨‍🏫", "🏫"],
+    "answer": ["cobra kai"],
+    "category": "serie",
+    "hint": "Rivalidades del karate años después de 'Karate Kid'"
+  },
+  {
+    "id": 97,
+    "date": "2025-12-12",
+    "emojis": ["🕵️‍♂️", "🧠", "🏛️"],
+    "answer": ["mindhunter", "cazador de mentes"],
+    "category": "serie",
+    "hint": "Estudio de asesinos en serie para el FBI"
+  },
+  {
+    "id": 98,
+    "date": "2025-12-13",
+    "emojis": ["🐼", "🥋", "🌏"],
+    "answer": ["kung fu panda"],
+    "category": "película",
+    "hint": "Un oso torpe aprende artes marciales"
+  },
+  {
+    "id": 99,
+    "date": "2025-12-14",
+    "emojis": ["👽", "🛸", "🕵️‍♀️"],
+    "answer": ["the x-files", "expediente x"],
+    "category": "serie",
+    "hint": "Agentes investigan fenómenos paranormales"
+  },
+  {
+  "id": 100,
+  "date": "2025-12-15",
+  "emojis": ["🪖", "⏱️", "👽"],
+  "answer": ["al filo del mañana", "edge of tomorrow"],
+  "category": "película",
+  "hint": "Revives el mismo día en medio de una invasión alienígena"
   }
 ]
