@@ -12,15 +12,48 @@ const AdBanner = ({
   useEffect(() => {
     // Solo cargar anuncios en producción
     if (import.meta.env.MODE === 'production' && window.adsbygoogle && adRef.current) {
+      const adElement = adRef.current;
+
       // Asegurar que el contenedor tenga dimensiones antes de inicializar AdSense
       const timer = setTimeout(() => {
         try {
           (window.adsbygoogle = window.adsbygoogle || []).push({});
+
+          // Forzar límites de altura después de que AdSense inyecte sus estilos
+          // AdSense usa data-full-width-responsive y puede sobrescribir max-height
+          const enforceHeightLimits = () => {
+            if (adElement) {
+              // Forzar max-height en el elemento ins
+              adElement.style.setProperty('max-height', '90px', 'important');
+              adElement.style.setProperty('overflow', 'hidden', 'important');
+
+              // También forzar en iframes hijos que AdSense crea
+              const iframes = adElement.querySelectorAll('iframe');
+              iframes.forEach(iframe => {
+                iframe.style.setProperty('max-height', '90px', 'important');
+              });
+            }
+          };
+
+          // Aplicar inmediatamente
+          enforceHeightLimits();
+
+          // Observer para cuando AdSense modifique los estilos
+          const observer = new MutationObserver(enforceHeightLimits);
+          observer.observe(adElement, {
+            attributes: true,
+            attributeFilter: ['style'],
+            childList: true,
+            subtree: true
+          });
+
+          // Cleanup
+          return () => observer.disconnect();
         } catch (error) {
           console.warn('AdSense error:', error);
         }
       }, 100); // Pequeño delay para asegurar que el DOM esté renderizado
-      
+
       return () => clearTimeout(timer);
     }
   }, []);
