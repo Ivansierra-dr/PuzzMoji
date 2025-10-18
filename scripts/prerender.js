@@ -1,10 +1,14 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import puppeteer from 'puppeteer';
+import puppeteer from 'puppeteer-core';
+import chromium from '@sparticuz/chromium';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const distPath = path.resolve(__dirname, '../dist');
+
+// Configuración para desarrollo local vs producción (Vercel)
+const isDev = process.env.NODE_ENV !== 'production' && !process.env.VERCEL;
 
 // Define all routes that need to be pre-rendered
 const routes = [
@@ -61,11 +65,35 @@ async function prerenderRoutes() {
   // Start local server
   const server = await startLocalServer();
 
-  // Launch browser
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
-  });
+  // Launch browser - usa Chrome local en dev, Chromium serverless en producción
+  let browser;
+  if (isDev) {
+    // Desarrollo local: intenta usar Chrome local instalado
+    browser = await puppeteer.launch({
+      headless: true,
+      executablePath: process.platform === 'darwin'
+        ? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+        : process.platform === 'linux'
+        ? '/usr/bin/google-chrome'
+        : 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
+    }).catch(async () => {
+      // Fallback: usa Chromium de @sparticuz
+      console.log('  ⚠️  Chrome no encontrado, usando Chromium de @sparticuz...');
+      return puppeteer.launch({
+        headless: true,
+        executablePath: await chromium.executablePath(),
+        args: chromium.args
+      });
+    });
+  } else {
+    // Producción (Vercel): usa @sparticuz/chromium
+    browser = await puppeteer.launch({
+      args: chromium.args,
+      executablePath: await chromium.executablePath(),
+      headless: chromium.headless
+    });
+  }
 
   try {
     for (const route of routes) {

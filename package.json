@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
+    "@sparticuz/chromium": "^141.0.0",
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",
     "@vitejs/plugin-react": "^5.0.3",
@@ -32,7 +33,7 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.3.0",
-    "puppeteer": "^24.25.0",
+    "puppeteer-core": "^24.25.0",
     "react-helmet-async": "^2.0.5",
     "serve-handler": "^6.1.6",
     "vite": "^7.1.2",
