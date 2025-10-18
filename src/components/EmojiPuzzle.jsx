@@ -259,11 +259,17 @@ const EmojiPuzzle = () => {
   };
 
   const getHint = () => {
+    // Verificar que se haya hecho al menos un intento
+    if (attempts.length === 0) {
+      alert('Debes hacer al menos un intento antes de solicitar una pista 💡');
+      return;
+    }
+
     // Mostrar anuncio antes de revelar la pista
     const showAd = window.confirm(
       '¿Quieres ver un anuncio para acceder a la pista? Esto nos ayuda a mantener el juego gratuito.'
     );
-    
+
     if (showAd) {
       // Simular carga de anuncio y luego mostrar pista
       setTimeout(() => {
@@ -339,7 +345,11 @@ const EmojiPuzzle = () => {
             <div className="game-info">
               <span className="attempts-left">Intento: {attempts.length + 1}/4</span>
               {!showHint && (
-                <button onClick={getHint} className="hint-btn">
+                <button
+                  onClick={getHint}
+                  className={`hint-btn ${attempts.length === 0 ? 'hint-btn-disabled' : ''}`}
+                  title={attempts.length === 0 ? 'Haz al menos un intento primero' : 'Obtener pista viendo un anuncio'}
+                >
                   <TwemojiText text="💡" size={16} /> Pista
                 </button>
               )}
